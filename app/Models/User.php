@@ -42,4 +42,41 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function hasBookmark(int $post_id)
+    {
+        return $this->bookmark()->where('post_id',$post_id)->exists();
+    }
+
+    public function bookmark()
+    {
+        return $this->belongsToMany(Post::class , 'bookmarks')->withTimestamps();
+    }
+
+    public function hasLike(int $post_id)
+    {
+        return $this->like()->where('post_id',$post_id)->exists();
+    }
+
+    public function like()
+    {
+        return $this->belongsToMany(Post::class , 'likes')->withTimestamps();
+    }
+
+    public function hasRepost(int $post_id)
+    {
+        return $this->repost()->where('post_id',$post_id)->exists();
+    }
+
+    public function repost()
+    {
+        return $this->belongsToMany(Post::class , 'reposts')->withTimestamps();
+    }
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    
 }

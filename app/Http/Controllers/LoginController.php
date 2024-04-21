@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout','addaccount']);
     }
 
     public function index($step)
@@ -79,5 +79,12 @@ class LoginController extends Controller
         Session::flush();
         Auth::logout();
         return redirect('/');
+    }
+
+    public function addaccount()
+    {
+        Session::flush();
+        Auth::logout();
+        return redirect('/singin/data');
     }
 }
