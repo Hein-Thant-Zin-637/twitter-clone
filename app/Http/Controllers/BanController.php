@@ -44,8 +44,6 @@ class BanController extends Controller
 
         // $interval = $date1->diff($date2);
        
-
-
         // $days = $interval->format('%a');
         // $hours = $interval->format('%h');
 
