@@ -19,9 +19,18 @@ Route::get('/', function () {
 
 Route::get('/singup/{step}',  [App\Http\Controllers\RegisterController::class,'index'])->name('singup');
 Route::post('/singup/{step}',  [App\Http\Controllers\RegisterController::class,'store']);
+
 Route::get('/singin/{step}',  [App\Http\Controllers\LoginController::class,'index'])->name('singin');
 Route::post('/singin/{step}',  [App\Http\Controllers\LoginController::class,'store']);
+
 Route::get('/logout', [App\Http\Controllers\LoginController::class,'logout'])->name('logout');
+Route::get('/addaccount', [App\Http\Controllers\LoginController::class,'addaccount'])->name('addaccount');
+
+
+Route::get('/home', function () {
+    return view('twitter.index');
+})->middleware('auth')->name('home');
+
 
 Route::get('/home', function () {
     return view('twitter.index');
@@ -31,6 +40,7 @@ Route::get('/home', function () {
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
+
 
 //admin-post
 Route::get('/admin/post-table',[App\Http\Controllers\PostController::class,'adminPostTable'])->name('post-table');
@@ -46,3 +56,4 @@ Route::get('/admin/user-table',[App\Http\Controllers\BanController::class,'admin
 Route::get('/admin/ban-user/{id}',[\App\Http\Controllers\BanController::class,'banForm'])->name('ban-form');
 Route::post('/admin/ban-user',[\App\Http\Controllers\BanController::class,'ban'])->name('ban-form');
 Route::delete('/admin/unban/{id}', [App\Http\Controllers\BanController::class, 'delete'])->name('unban');
+
