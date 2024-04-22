@@ -20,6 +20,12 @@
 </head>
 
 <body>
+
+    
+
+
+
+
     <div class="row w-100">
         <div class="col-12 col-lg-6 p-5 d-lg-flex justify-content-center align-items-center">
             <img src="/svg/twitter.svg" alt="" class="twitter-logo">
@@ -62,8 +68,43 @@
     <main>
         @yield('content')
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    @if(isset($_SESSION['ban']))
+    <div class="modal" id="register" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title text-danger">!!!!!!!!</h2>
+       
+      
+      </div>
+      <div class="modal-body">
+      <p class="text-danger">{{ $_SESSION['ban'] }}</p>
+      </div>
+      <div class="modal-footer">
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#register').modal('show');
+        });
+
+        
+        function close(){
+            $('#register').modal('hide');
+        }
+    </script>
+  @php
+ session_destroy(); 
+  @endphp
+    @endif
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     @yield('script')
 
