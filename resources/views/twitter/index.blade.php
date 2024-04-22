@@ -26,12 +26,17 @@
                     tabindex="0">
                     <div class="info-list">
                         <ul class="list-group">
-                            <livewire:post-show >
+                            <livewire:foryou-post >
                         </ul>
                     </div>
                 </div>
                 <div class="tab-pane fade " id="following" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                    following
+                    <p>bookmark</p>
+                    <div class="info-list">
+                        <ul class="list-group">
+                            <livewire:bookmark-post >
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,10 +44,10 @@
             <div class="sticky-top" style="top:-470px;z-index: 999;">
                 <div>
                     <form class="search">
-                        <div class="input-group mb-3 w-100 rounded-pill">
-                            <span class="input-group-text border-right-0" id="basic-addon1"><img class="search-icon"
+                        <div class="d-flex flex-row mb-3 w-100 bg-gray-100 align-items-center rounded-pill">
+                            <span class="ms-3 border-right-0 border-0" id="basic-addon1"><img class="search-icon"
                                     src="/svg/search.svg" alt="" style="width: 23px; height: 23px;"></span>
-                            <input type="text" class="form-control shadow-none bg-gray-100" placeholder="Search"
+                            <input type="text" class="form-control shadow-none border-0 bg-gray-100 rounded-pill" placeholder="Search"
                                 aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </form>
@@ -67,60 +72,18 @@
                 <div class="card border-0 rounded-4 mb-3 mt-3">
                     <div class="card-header   border-0 " style="font-size:1.25rem;font-weight: 700;">Who To Follow</div>
                     <div class="card-body p-2 border-0" style="background-color:#f8f9fc">
-                        <div class="w-100 d-flex justify-content-between align-items-center gap-2 w-auto rounded-pill"
-                            style="padding: 0.6rem">
-                            <div class="d-flex flex-row gap-3">
-                                <div>
-                                    <img src="/img/avatar2.jpeg" alt="" class="rounded-pill"
-                                        style="widh: 50px; height: 50px;">
-                                </div>
-                                <div class="rounded-pill d-flex flex-column">
-                                    <a href="https://merchantface.com/tags/office-desk"
-                                        class="fs-5 font-weight-bold text-decoration-none text-dark">Name</a>
-                                    <p class="m-0 text-muted">@username</p>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="btn btn-dark font-weight-bold rounded-pill">Follow</button>
-                            </div>
-                        </div>
-                        <div class="w-100 d-flex justify-content-between align-items-center gap-2 w-auto rounded-pill"
-                            style="padding: 0.6rem">
-                            <div class="d-flex flex-row gap-3">
-                                <div>
-                                    <img src="/img/avatar2.jpeg" alt="" class="rounded-pill"
-                                        style="widh: 50px; height: 50px;">
-                                </div>
-                                <div class="rounded-pill d-flex flex-column">
-                                    <a href="https://merchantface.com/tags/office-desk"
-                                        class="fs-5 font-weight-bold text-decoration-none text-dark">Name</a>
-                                    <p class="m-0 text-muted">@username</p>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="btn btn-dark font-weight-bold rounded-pill">Follow</button>
-                            </div>
-                        </div>
-                        <div class="w-100 d-flex justify-content-between align-items-center gap-2 w-auto rounded-pill"
-                            style="padding: 0.6rem">
-                            <div class="d-flex flex-row gap-3">
-                                <div>
-                                    <img src="/img/avatar2.jpeg" alt="" class="rounded-pill"
-                                        style="widh: 50px; height: 50px;">
-                                </div>
-                                <div class="rounded-pill d-flex flex-column">
-                                    <a href="https://merchantface.com/tags/office-desk"
-                                        class="fs-5 font-weight-bold text-decoration-none text-dark">Name</a>
-                                    <p class="m-0 text-muted">@username</p>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="btn btn-dark font-weight-bold rounded-pill">Follow</button>
-                            </div>
-                        </div>
+                        <livewire:follow-list >
                         <div class="card-footer  border-0 text-info">Show more...</div>
                     </div>
                 </div>
+                <small>Terms of Service
+                    Privacy Policy
+                    Cookie Policy
+                    Accessibility
+                    Ads info
+                    More
+                    © 2024 X Corp.
+                    Site Malicious Rat</small>
             </div>
         </div>
     </div>

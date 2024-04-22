@@ -27,7 +27,11 @@ Route::get('/logout', [App\Http\Controllers\LoginController::class,'logout'])->n
 Route::get('/addaccount', [App\Http\Controllers\LoginController::class,'addaccount'])->name('addaccount');
 
 
-Route::get('/home', [App\Http\Controllers\PostConroller::class,'index'])->name('home');
+Route::get('/home', function () {
+    return view('twitter.index');
+})->middleware('auth')->name('home');
+
+
 
 Route::get('/dashboard', function () {
     return view('admin.index');

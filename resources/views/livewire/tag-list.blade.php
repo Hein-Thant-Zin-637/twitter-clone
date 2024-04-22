@@ -1,6 +1,6 @@
 <div>
     @foreach ($tags as $tag)
-    @if ($loop->index > 6)
+    @if ($loop->index > 7)
         @break
     @endif
     <div class="d-flex align-items-center p-2 tagdiv">

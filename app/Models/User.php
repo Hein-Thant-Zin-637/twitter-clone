@@ -63,6 +63,21 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class , 'likes')->withTimestamps();
     }
 
+    public function hasFollow(int $followed_id)
+    {
+        return $this->following()->where('followed_id',$followed_id)->exists();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followings', 'followed_id', 'follower_id');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'followings', 'follower_id', 'followed_id');
+    }
+
     public function hasRepost(int $post_id)
     {
         return $this->repost()->where('post_id',$post_id)->exists();
