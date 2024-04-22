@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+use App\Models\Ban;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -27,12 +30,12 @@ class LoginController extends Controller
             if ($request->type !== null) {
                 if (User::where('email', $request->type)->exists()) {
                     $type = 'email';
-                }elseif(User::where('phone', $request->type)->exists()) {
+                } elseif (User::where('phone', $request->type)->exists()) {
                     $type = 'phone';
-                }elseif(User::where('user_name', $request->type)->exists()) {
+                } elseif (User::where('user_name', $request->type)->exists()) {
                     $type = 'user_name';
-                }else{
-                    $error += ['type' => "This account doesn't exists" ];
+                } else {
+                    $error += ['type' => "This account doesn't exists"];
                 }
             }
             if ($request->type === null) {
@@ -60,17 +63,48 @@ class LoginController extends Controller
             $data = $request->$type;
             $user = User::where($type, $data)->first();
 
-            if(password_verify( $user->password ,$request->password)){
+
+
+
+            if (password_verify($user->password, $request->password)) {
                 $error += ['password' => "Passwoed is not incorrect"];
             }
+
+            $hasban = DB::table('bans')->where('user_id', $user->id)->get();
+            if (!$hasban->isEmpty()) {
+
+                $today = date("Y-m-d H:i:s");
+                $timer = $hasban[0]->timer ?? false;
+
+                $date1 = new DateTime($timer);
+                $date2 = new DateTime($today);
+
+               
+                $interval = $date1->diff($date2);
+
+                $days = $interval->format('%a');
+                $hours = $interval->format('%h');
+
+                if ($interval->invert == 1) {
+                    $hasban->delete();
+                }else {
+                    
+
+
+
+                    $_SESSION['ban'] = "your account has been ban for " . $days . " Days and " . $hours . " Hours Left";
+                    return redirect('/');
+                }
+            }
+
+
 
             if ($error != null) {
                 return back()->withInput($request->input())->withErrors($error);
             } else {
                 Auth::login($user);
                 return redirect('/home');
-            }        
-
+            }
         }
     }
 
