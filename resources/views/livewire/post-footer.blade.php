@@ -1,9 +1,7 @@
+
 <div class="d-flex justify-content-between p-3">
     <div>
-        <a href="" class="text-dark text-decoration-none d-flex align-items-center gap-2">
-            <img src="/svg/comment.svg" alt="" style="width: 23px; height: 23px;">
-            <span>4</span>
-        </a>
+        <livewire:comment :post="$post" />
     </div>
     <div>
         @if (auth()->user()

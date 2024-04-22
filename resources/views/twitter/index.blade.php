@@ -26,15 +26,14 @@
                     tabindex="0">
                     <div class="info-list">
                         <ul class="list-group">
-                            <livewire:foryou-post >
+                            <livewire:foryou-post>
                         </ul>
                     </div>
                 </div>
                 <div class="tab-pane fade " id="following" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                    <p>bookmark</p>
                     <div class="info-list">
                         <ul class="list-group">
-                            <livewire:bookmark-post >
+                            <livewire:following-post>
                         </ul>
                     </div>
                 </div>
@@ -47,8 +46,8 @@
                         <div class="d-flex flex-row mb-3 w-100 bg-gray-100 align-items-center rounded-pill">
                             <span class="ms-3 border-right-0 border-0" id="basic-addon1"><img class="search-icon"
                                     src="/svg/search.svg" alt="" style="width: 23px; height: 23px;"></span>
-                            <input type="text" class="form-control shadow-none border-0 bg-gray-100 rounded-pill" placeholder="Search"
-                                aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control shadow-none border-0 bg-gray-100 rounded-pill"
+                                placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </form>
                 </div>
@@ -62,7 +61,7 @@
                     <div class="card-header   border-0 " style="font-size:1.25rem;font-weight: 700;">Popular tags</div>
                     <div class="card-body p-2 border-0" style="background-color:#f8f9fc">
                         <div>
-                            <livewire:tag-list >
+                            <livewire:tag-list>
                         </div>
                         <div class="card-footer  border-0 text-info">Show more...</div>
                     </div>
@@ -72,8 +71,8 @@
                 <div class="card border-0 rounded-4 mb-3 mt-3">
                     <div class="card-header   border-0 " style="font-size:1.25rem;font-weight: 700;">Who To Follow</div>
                     <div class="card-body p-2 border-0" style="background-color:#f8f9fc">
-                        <livewire:follow-list >
-                        <div class="card-footer  border-0 text-info">Show more...</div>
+                        <livewire:follow-list>
+                            <div class="card-footer  border-0 text-info">Show more...</div>
                     </div>
                 </div>
                 <small>Terms of Service
@@ -94,7 +93,13 @@
         window.addEventListener('close-modal', event => {
 
             $('#postModal').modal('hide');
+            $('.commentModal').modal('hide');
         })
     </script>
 
+    <script>
+        window.addEventListener('close-modal', event => {
+            $('.modal').modal('hide');
+        });
+    </script>
 @endsection

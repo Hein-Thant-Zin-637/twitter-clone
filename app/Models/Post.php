@@ -39,4 +39,9 @@ class Post extends Model
     {
         return $this->hasMany(Repost::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

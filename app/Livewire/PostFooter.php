@@ -47,6 +47,7 @@ class PostFooter extends Component
         $user = auth()->user();
         $user->repost()->detach($post_id);
     }
+
     
     public function render()
     {
