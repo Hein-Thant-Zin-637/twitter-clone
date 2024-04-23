@@ -18,13 +18,80 @@
                 </div>
                 <div class="ml-2"><span>Delete</span></div>
             </button>
-        @else
-            <div class="d-flex div-info-more-item dropdown-item">
-                <div>
-                    <img src="/svg/report.svg" alt="">
-                </div>
-                <div class="ml-2"><span>Report post</span></div>
+            <div>
+                @if (auth()->user()
+                    ?->hasPin($post->id))
+                <button wire:click="unpin({{ $post->id }})"  class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
+                    <div>
+                        <img src="/svg/pin.svg" alt="" style="width: 23px; height: 23px;">
+                    </div>
+                    <div class="ml-2 ms-1"><span>UnPin Post</span></div>
+                </button>
+            @else
+                <button wire:click="pin({{ $post->id }})"  class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
+                    <div>
+                        <img src="/svg/pin.svg" alt="" style="width: 23px; height: 23px;">
+                    </div>
+                    <div class="ml-2 ms-1"><span>Pin Post</span></div>
+                </button>
+            @endif
             </div>
+        @else
+        <div>
+            @if (auth()->user()
+                    ?->hasFollow($post->user_id))
+                    <button wire:click="unfollow({{ $post->user_id}})"
+                    class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
+                    <div>
+                        <img src="/svg/unfollow.svg" alt="" style="width: 23px; height: 23px;">
+                    </div>
+                    <div class="ml-2"><span>UnFollow {{ "@".$post->user->user_name }}</span></div>
+                </button>
+            @else
+            <button wire:click="follow({{ $post->user_id}})"
+                class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
+                <div>
+                    <img src="/svg/follow.svg" alt="" style="width: 23px; height: 23px;">
+                </div>
+                <div class="ml-2"><span>Follow {{ "@".$post->user->user_name }}</span></div>
+            </button>
+            @endif
+        </div>
+            
+        <div>
+            @if (auth()->user()
+                    ?->hasMute($post->user_id))
+                    <button wire:click="unmute({{ $post->user_id}})"
+                    class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
+                    <div>
+                        <img src="/svg/unmute.svg" alt="" style="width: 23px; height: 23px;">
+                    </div>
+                    <div class="ml-2"><span>UnMute {{ "@".$post->user->user_name }}</span></div>
+                </button>
+            @else
+            <button wire:click="mute({{ $post->user_id}})"
+                class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
+                <div>
+                    <img src="/svg/mute.svg" alt="" style="width: 23px; height: 23px;">
+                </div>
+                <div class="ml-2"><span>Mute {{ "@".$post->user->user_name }}</span></div>
+            </button>
+            @endif
+        </div>
+
+        
+            <button wire:click="block({{ $post->user_id}})"
+                class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
+                <div>
+                    <img src="/svg/block.svg" alt="" style="width: 20px; height: 20px;">
+                </div>
+                <div class="ml-2"><span>Block {{ "@".$post->user->user_name }}</span></div>
+            </button>
+            <div>
+                <livewire:report :post="$post" />
+            </div>
+     
+            
         @endif
 
     </div>

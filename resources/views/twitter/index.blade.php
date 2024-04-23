@@ -90,16 +90,11 @@
 
 @section('script')
     <script>
-        window.addEventListener('close-modal', event => {
-
+        window.addEventListener('close-modal',(event) => {
+            let id = event.__livewire.params.id;
             $('#postModal').modal('hide');
-            $('.commentModal').modal('hide');
+            $(`#commentModal${id}`).modal('hide');
+            $('.modal-backdrop').hide();
         })
-    </script>
-
-    <script>
-        window.addEventListener('close-modal', event => {
-            $('.modal').modal('hide');
-        });
     </script>
 @endsection

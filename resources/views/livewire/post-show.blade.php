@@ -48,7 +48,7 @@
                         } else {
                             echo 'col-6';
                         } ?> p-0">
-                            <img src="{{ asset($image->media) }}" alt="" style="width: 100%; height: auto;">
+                            <img src="{{ asset("/storage/".$image->media) }}" alt="" style="width: 100%; height: auto;">
                         </div>
                     @endforeach
                 </div>

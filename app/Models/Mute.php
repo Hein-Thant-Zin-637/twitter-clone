@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mute extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'mute_id',
+        'user_id'
+    ];
 }

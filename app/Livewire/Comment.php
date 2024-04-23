@@ -25,7 +25,7 @@ class Comment extends Component
         ]);
 
         $this->commentText = '';
-        $this->dispatch('close-modal');
+        $this->dispatch('close-modal', id:$this->post->id);
         $this->dispatch('commentAdded');
     }
     public function render()

@@ -9,7 +9,7 @@ class FollowingPost extends Component
 {
     public $posts;
     
-    protected $listeners = ['postStored' => 'refreshPosts'];
+    protected $listeners = ['refreshPosts' => 'refreshPosts'];
 
     public function mount()
     {

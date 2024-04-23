@@ -43,6 +43,16 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function hasPin(int $post_id)
+    {
+        return $this->Pin()->where('post_id',$post_id)->exists();
+    }
+
+    public function Pin()
+    {
+        return $this->hasMany(Pin::class);
+    }
+
     public function hasBookmark(int $post_id)
     {
         return $this->bookmark()->where('post_id',$post_id)->exists();
@@ -76,6 +86,37 @@ class User extends Authenticatable
     public function following()
     {
         return $this->belongsToMany(User::class, 'followings', 'follower_id', 'followed_id');
+    }
+
+    public function hasBlock(int $blocked_id)
+    {
+        return $this->blocking()->where('blocked_id',$blocked_id)->exists();
+    }
+
+    public function hasBlocked(int $block_id)
+    {
+        return $this->blocker()->where('block_id',$block_id)->exists();
+    }
+
+    public function blocker()
+    {
+        return $this->belongsToMany(User::class, 'blocks', 'blocked_id', 'block_id');
+    }
+
+    public function blocking()
+    {
+        return $this->belongsToMany(User::class, 'blocks', 'block_id', 'blocked_id');
+    }
+
+    
+    public function hasMute(int $mute_id)
+    {
+        return $this->mute()->where('mute_id',$mute_id)->exists();
+    }
+
+    public function mute()
+    {
+        return $this->belongsToMany(User::class, 'mutes', 'user_id', 'mute_id');
     }
 
     public function hasRepost(int $post_id)

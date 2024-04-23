@@ -46,14 +46,14 @@ class NewPost extends Component
             $path = $image->store( 'images', 'public');
             Post_Media::create([
                 'post_id' => $post->id,
-                'media' => "/storage/".$path, 
+                'media' => $path, 
             ]);
             $this->images = [];
         }
 
         $this->resetInput();
         $this->dispatch('close-modal');
-        $this->dispatch('postStored');
+        $this->dispatch('refreshPosts');
     }
 
     public function resetInput()
