@@ -9,16 +9,16 @@ class FollowList extends Component
 {
     public $users;
     
-    protected $listeners = ['userFollow' => 'refreshPosts'];
+    protected $listeners = ['userFollow' => 'refreshList'];
 
     public function mount()
     {
-        $this->refreshPosts();
+        $this->refreshList();
     }
 
-    public function refreshPosts()
+    public function refreshList()
     {
-        $this->users = User::latest()->get();
+        $this->users = User::all();
     }
     public function render()
     {

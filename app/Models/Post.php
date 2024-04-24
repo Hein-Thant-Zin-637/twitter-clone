@@ -17,7 +17,7 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class , 'post__tags');
     }
 
     public function medias()
@@ -41,4 +41,11 @@ class Post extends Model
         return $this->hasMany(Repost::class);
     }
 
+<<<<<<< HEAD
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+=======
+>>>>>>> aede73e4ac6dca81e9a4f775d375667ecb1031c7
 }

@@ -3,28 +3,26 @@
 namespace App\Livewire;
 
 use App\Models\Post;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class ForyouPost extends Component
+class FollowingPost extends Component
 {
     public $posts;
     
-    protected $listeners = ['refreshPosts' => 'refreshData'];
+    protected $listeners = ['refreshPosts' => 'refreshPosts'];
 
-    
     public function mount()
     {
-        $this->refreshData();
+        $this->refreshPosts();
     }
 
-    public function refreshData()
+    public function refreshPosts()
     {
         $this->posts = Post::latest()->get();
     }
     
     public function render()
     {
-        return view('livewire.foryou-post');
+        return view('livewire.following-post');
     }
 }

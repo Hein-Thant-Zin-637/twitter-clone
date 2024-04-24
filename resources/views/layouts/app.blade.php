@@ -22,7 +22,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -31,21 +31,28 @@
     <script src="https://kit.fontawesome.com/f1dd83d39c.js" crossorigin="anonymous"></script>
 
     {{-- twitter --}}
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <link rel="shortcut icon" href="https://img.merchantface.com/site/favicon.ico">
+<<<<<<< HEAD
     <link rel="stylesheet" href="./css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/viewer.min.css">
     <link rel="stylesheet" href="./css/bootstrap-msg.css">
     <link rel="stylesheet" href="./css/site.css">
     <link rel="stylesheet" href="./css/profile.css">
+=======
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/viewer.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-msg.css">
+    <link rel="stylesheet" href="/css/site.css">
+>>>>>>> 98614bedc6951e1131e44aecf6980d9ccb36cad7
 
-    <script src="./js/jquery-1.11.3.min.js.download"></script>
-    <script src="./js/bootstrap.min.js.download"></script>
-    <script src="./js/jquery.easing.js.download"></script>
-    <script src="./js/theme.js.download"></script>
-    <script src="./js/viewer-jquery.min.js.download"></script>
-    <script src="./js/bootstrap-msg.js.download"></script>
+    <script src="/js/jquery-1.11.3.min.js.download"></script>
+    <script src="/js/bootstrap.min.js.download"></script>
+    <script src="/js/jquery.easing.js.download"></script>
+    <script src="/js/theme.js.download"></script>
+    <script src="/js/viewer-jquery.min.js.download"></script>
+    <script src="/js/bootstrap-msg.js.download"></script>
 
     <script src="./js/bootbox.min.js.download"></script>
     <style type="text/css">
@@ -75,7 +82,7 @@
             <div class=" d-flex flex-column p-0">
                 <ul class="nav navbar-nav text-black ms-2 mt-3 d-flex flex-column" id="accordionSidebar">
                     <li class="nav-item">
-                        <a class="nav-link p-0 w-auto h-auto" href="#">
+                        <a class="nav-link p-0 w-auto h-auto" href="{{ route('home') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
                                 <object data="/svg/home.svg" width="30" height="30">
@@ -84,7 +91,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-0 w-auto h-auto" href="#">
+                        <a class="nav-link p-0 w-auto h-auto" href="{{ route('explore') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
                                 <object data="/svg/search.svg" width="30" height="30">
@@ -93,7 +100,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-0 w-auto h-auto" href="#">
+                        <a class="nav-link p-0 w-auto h-auto" href="{{ route('notification') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
                                 <object data="/svg/notification.svg" width="30" height="30">
@@ -102,7 +109,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-0 w-auto h-auto" href="#">
+                        <a class="nav-link p-0 w-auto h-auto" href="{{ route('bookmark') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
                                 <object data="/svg/bookmark.svg" width="30" height="30">
