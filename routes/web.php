@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RegisterConroller;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,26 @@ Route::post('/singin/{step}',  [App\Http\Controllers\LoginController::class,'sto
 Route::get('/logout', [App\Http\Controllers\LoginController::class,'logout'])->name('logout');
 Route::get('/addaccount', [App\Http\Controllers\LoginController::class,'addaccount'])->name('addaccount');
 
-
 Route::get('/home', function () {
     return view('twitter.index');
 })->middleware('auth')->name('home');
+
+Route::get('/explore', function () {
+    return view('twitter.explore');
+})->middleware('auth')->name('explore');
+
+Route::get('/notification', function () {
+    return view('twitter.notification');
+})->middleware('auth')->name('notification');
+
+Route::get('/bookmark', function () {
+    return view('twitter.bookmark');
+})->middleware('auth')->name('bookmark');
+
+Route::get('/post/{user_name}/status/{id}', function ($user_name, $id) {
+    $post = Post::find($id);
+    return view('twitter.show',[ 'post'=>$post ]);
+})->middleware('auth')->name('postdetail');
 
 
 

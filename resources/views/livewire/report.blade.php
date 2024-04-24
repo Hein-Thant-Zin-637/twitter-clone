@@ -1,5 +1,5 @@
 <div>
-    <button data-toggle="modal" data-target="#reportModal{{ $post->id }}"
+    <button type="button" onclick="event.preventDefault()"  data-toggle="modal" data-target="#reportModal{{ $post->id }}"
         class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
         <div>
             <img src="/svg/report.svg" alt="" style="width: 23px; height: 23px;">
@@ -18,7 +18,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
                     <form wire:submit.prevent="submitReport">
                         @csrf
                         <div class="row">

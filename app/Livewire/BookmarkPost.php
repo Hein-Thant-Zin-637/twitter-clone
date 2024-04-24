@@ -9,16 +9,15 @@ class BookmarkPost extends Component
 {
     public $posts;
     
-    protected $listeners = ['storeBookmark' => 'refreshPosts'];
+    protected $listeners = ['refreshBookmark' => 'refreshData'];
 
     public function mount()
     {
-        $this->refreshPosts();
+        $this->refreshData();
     }
 
-    public function refreshPosts()
+    public function refreshData()
     {
-        // dd(auth()->user()->bookmark);
          $this->posts = auth()->user()->bookmark;
     }
 

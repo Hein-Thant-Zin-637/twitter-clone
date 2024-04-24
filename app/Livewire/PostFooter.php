@@ -15,17 +15,18 @@ class PostFooter extends Component
             'post_id' => $post_id,
             'user_id' => auth()->user()->id,
         ]);
-        $this->dispatch('storeBookmark');
+        $this->dispatch('refreshBookmark');
     }
 
     public function unbookmark(int $post_id)
     {
         Bookmark::where('user_id', auth()->user()->id)->where('post_id', $post_id)->delete();
-        $this->dispatch('storeBookmark');
+        $this->dispatch('refreshBookmark');
     }
 
     public function like(int $post_id)
-    {
+    {   
+       
         $user = auth()->user();
         $user->like()->attach($post_id);
     }

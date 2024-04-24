@@ -3,12 +3,16 @@
 namespace App\Livewire;
 
 use App\Models\Block;
+use App\Models\Bookmark;
+use App\Models\Comment;
 use App\Models\Following;
+use App\Models\Like;
 use App\Models\Mute;
 use App\Models\Pin;
 use App\Models\Post;
 use App\Models\Post_Media;
 use App\Models\Post_Tag;
+use App\Models\Repost;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -24,12 +28,6 @@ class PostMenu extends Component
             foreach($images as $image){
                 Storage::delete('public/'.$image->media);
                 $image->delete();
-            }
-        }
-        $tags = Post_Tag::where('post_id', $post->id)->get();
-        if($tags){
-            foreach($tags as $tag){
-                $tag->delete();
             }
         }
         $post->delete();

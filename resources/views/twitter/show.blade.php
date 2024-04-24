@@ -5,38 +5,19 @@
     <div class="row w-100 v-body">
         <div class="col-lg-8 col-md-12 border-end px-1">
             <div class="row w-100  sticky-top text-bg-light  mb-3" style="margin-left :0.3px;">
-                <ul class="nav bg-white p-1" id="pills-tab" role="tablist">
-                    <li class="nav-item col-6" role="presentation">
-                        <button class="nav-link text-center fs-5 w-100 text-dark p-0 active" id="pills-home-tab"
-                            data-bs-toggle="pill" data-bs-target="#for-you" type="button" role="tab"
-                            aria-controls="pills-home" aria-selected="true">For you</button>
-                    </li>
-                    <li class="nav-item col-6" role="presentation">
-                        <button class="nav-link text-center fs-5 w-100 text-dark p-0" id="pills-profile-tab"
-                            data-bs-toggle="pill" data-bs-target="#following" type="button" role="tab"
-                            aria-controls="pills-profile" aria-selected="false">Following</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="m-2">
-                <livewire:new-post>
-            </div>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="for-you" role="tabpanel" aria-labelledby="pills-home-tab"
-                    tabindex="0">
-                    <div class="info-list">
-                        <ul class="list-group">
-                            <livewire:foryou-post>
-                        </ul>
-                    </div>
+                <div class=" d-flex flex-row gap-4 align-items-center">
+                    <a href="{{ route('home') }}" class="text-black"><i class="fa-solid fa-arrow-left fa-2x"></i></a>
+                <span class="h3">Post</span>
                 </div>
-                <div class="tab-pane fade " id="following" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                    <div class="info-list">
-                        <ul class="list-group">
-                            <livewire:following-post>
-                        </ul>
-                    </div>
-                </div>
+            </div>
+            <div>
+                <livewire:post-show :post="$post">
+            </div>
+            <div class="mb-3">
+                <livewire:comment :post="$post" />
+            </div>
+            <div class="mt-3">
+                <livewire:comment-list :post="$post" />
             </div>
         </div>
         <div class="col-lg-4 mb-4 pr-0 mt-2">
@@ -92,9 +73,9 @@
     <script>
         window.addEventListener('close-modal',(event) => {
             let id = event.__livewire.params.id;
-            $('#postModal').modal().hide();
-            $(`#commentModal${id}`).modal().hide();
-            $(`#reportModal${id}`).modal().hide();
+            $('#postModal').modal('hide');
+            $(`#commentModal${id}`).modal('hide');
+            $(`#reportModal${id}`).modal('hide');
             $('.modal-backdrop').hide();
         })
     </script>
