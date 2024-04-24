@@ -36,10 +36,19 @@ Route::get('/home', function () {
     return view('twitter.index');
 });
 
+
+//profile
+Route::get('/profile', function () {
+    return view('twitter.profile');
+});
+
+Route::post('/update-profile',[\App\Http\Controllers\UserController::class,'update'])->name('update-profile');
+
+
+
 //Admin
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
+Route::get('/admin/dashboard',[App\Http\Controllers\DashboardController::class,'index'])->name('dashboard');
+
 
 
 //admin-post
@@ -56,4 +65,4 @@ Route::get('/admin/user-table',[App\Http\Controllers\BanController::class,'admin
 Route::get('/admin/ban-user/{id}',[\App\Http\Controllers\BanController::class,'banForm'])->name('ban-form');
 Route::post('/admin/ban-user',[\App\Http\Controllers\BanController::class,'ban'])->name('ban-form');
 Route::delete('/admin/unban/{id}', [App\Http\Controllers\BanController::class, 'delete'])->name('unban');
-
+Route::get('/admin/user-detail/{id}',[\App\Http\Controllers\UserController::class, 'detail'])->name('user-detail');

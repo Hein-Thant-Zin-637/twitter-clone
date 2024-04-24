@@ -21,6 +21,8 @@
 
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/../css/profile.css">
+
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -38,30 +40,35 @@
 
         <div class="menu-items ">
             <ul class="nav-links p-3 ">
-                <li><a href="{{route('dashboard')}}">
+                <li><a href="{{route('dashboard')}}" class="nav-link (request()->is('admin/dashboard')) ? 'active' : '' }}">
                     <i class="uil uil-estate"></i>
-                    <span class="link-name">Home</span>
+                    <span class="link-name">Dashboard</span>
                 </a></li>
-                <li><a href="{{route('post-table') }}">
+                <li><a href="{{route('post-table') }}" class="nav-link {{ (request()->is('admin/post-table')) ? 'active' : '' }}">
                 <i class="fa-solid fa-book"></i>
                     <span class="link-name">Post List</span>
                 </a></li>
-                <li><a href="{{route('report-post-table') }}">
+                <li><a href="{{route('report-post-table') }}" class="nav-link {{ (request()->is('admin/report-post-table')) ? 'active' : '' }}">
                     <i class="uil uil-chart"></i>
                     <span class="link-name">Post Report List</span>
                 </a></li>
-                <li><a href="{{route('user-table') }}">
+                <li><a href="{{route('user-table') }}" class="nav-link {{ (request()->is('admin/user-table')) ? 'active' : '' }}">
                     <i class="uil uil-user"></i>
                     <span class="link-name">User List</span>
                 </a></li>
                 <li><a href="#">
                     <i class="uil uil-comments"></i>
-                    <span class="link-name">Comment</span>
+                    <span class="link-name">Message Report List</span>
                 </a></li>
               
             </ul>
             
             <ul class="logout-mode p-3">
+            <li><a href="/home">
+            <i class="fa-solid fa-house"></i>
+                    <span class="link-name">Home</span>
+                </a></li>
+
                 <li><a href="{{route('logout')}}">
                     <i class="uil uil-signout"></i>
                     <span class="link-name">Logout</span>

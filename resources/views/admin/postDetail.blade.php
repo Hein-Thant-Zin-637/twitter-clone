@@ -9,61 +9,68 @@
 
 <h1 class="display-5">Post Detail</h1>
 
-<article class="border border-radius p-3" href="/../qiongliwu/posts/27294">
-    {{-- head --}}
-    <div class="d-inline-flex" style="width:100%">
-        <a href="#">
-            <div class="info_author_photo pl-2 pt-2">
-                <img src="../../img/459510ae-8588-4e0b-8a23-01da7aa31d1f.jpg" alt="..." style="width:3rem;height:3rem" class="mr-3 rounded-circle">
-            </div>
-        </a>
-        <div class="flex-fill p-4">
-            <div class="d-flex">
-                <div class="d-flex info_author">
-                    <div>
-                        <div class="d-flex">
-                            <a href="#" class="text-a">
-                                <div style="line-height:100%">
-                                    <span class="v-text-s">Ms. Qiongli Wu</span>
+
+<div >
+    <li class="list-group-items m-3 p-3 card">
+        <article href="/qiongliwu/posts/27294">
+            {{-- head --}}
+            <div class="d-inline-flex" style="width:100%">
+                <a href="#">
+                    <div class="info_author_photo px-4 pt-2">
+                       
+                        <img src=" {{$post->user->profile ? '/storage/'.$post->user->profile : '/../profile_default_image.jpg'}}" alt="..."
+                            style="width:3rem;height:3rem" class="mr-3 rounded-circle">
+                    </div>
+                </a>
+                <div class="flex-fill pt-2">
+                    <div class="d-flex">
+                        <div class="d-flex info_author">
+                            <div style="align-items: center;">
+                                <div class="d-flex flex-row gap-1 mt-2">
+                                    <a href="#"class="text-a">
+                                        <div style="line-height:100%">
+                                            <span class="v-text-s">{{ $post->user->name }}</span>
+                                        </div>
+                                    </a>
+                                    <div class="pl-2 text-m">
+                                        <span class="text-to">{{ $post->user->user_name }}</span>
+                                    </div>
+                                    <div class="pl-2">
+                                        <p class="text-muted">{{ $post->created_at->diffForHumans() }}</p>
+                                    </div>
                                 </div>
-                            </a>
-                            <div class="pl-2 text-m">
-                                <span class="text-to">@qiongliwu</span>
                             </div>
                         </div>
+                       
                     </div>
-                    <div class="pl-2">
-                        <p class="text-muted">26 minutes ago</p>
-                    </div>
+                    {{-- description --}}
+                    <div class="info-intro">{{ $post->description }}</div>
+                    {{-- image --}}
+                    <div class="row w-100 mt-3">
+                        @foreach ($post->medias as $image)
+                            @if ($loop->index > 3)
+                            @break
+                        @endif
+                        <div class="<?php if (count($post->medias) == 1) {
+                            echo 'col-12';
+                        } elseif (count($post->medias) == 3) {
+                            echo 'col-4';
+                        } else {
+                            echo 'col-6';
+                        } ?> p-0">
+                            <img src="{{ asset($image->media) }}" alt="" style="width: 100%; height: auto;">
+                        </div>
+                    @endforeach
                 </div>
-
-
+                {{-- footer --}}
+               
             </div>
-            {{-- description --}}
-            <div class="info-intro">
-                <span class="text-success">#sell</span>
-                SupBro new hot selling productsSports shoes waterproof
-                protection cleaner,Place of Origin:Guangdong, China Cases of
-                gauge:24 bottles Brand Name:SupBro Product features:waterproof
-                Product specification:150ml,300ml Model Number:Nano...
-            </div>
-            {{-- image --}}
-
-            <div class="row w-100">
-                <div class="col-6 p-0">
-                    <img src="../../img/1b4c349b-0d3c-4611-8cd1-f810d735bbad.jpg" alt="" style="width: 100%; height: auto;">
-                </div>
-                <div class="col-6 p-0">
-                    <img src="../../img/1b4c349b-0d3c-4611-8cd1-f810d735bbad.jpg" alt="" style="width: 100%; height: auto;">
-                </div>
-            </div>
-            {{-- footer --}}
-
         </div>
+    </article>
+</li>
 
+</div>
 
-    </div>
-</article>
 
 <div class="d-flex justify-content-between p-3">
     <div>
@@ -73,7 +80,7 @@
 
 
             <select class="form-select" id="message" name="message" aria-label="Default select example">
-                <option  selected>Open this select menu</option>
+                <option  disabled>Open this select menu</option>
                 <option name="message" value="Deleting for cringe">Deleting for cringe</option>
                 <option name="message" value="2">Two</option>
                 <option name="message" value="3">Three</option>

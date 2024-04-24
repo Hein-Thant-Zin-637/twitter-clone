@@ -77,7 +77,7 @@
                     </form>
                     @endif
 
-                    <a href="" class="btn btn-primary" style="height: 34px; margin:0 10px;">Detail</a>
+                    <a href="{{url("/admin/user-detail/$user->id")}}" class="btn btn-primary" style="height: 34px; margin:0 10px;">Detail</a>
 
                     <div>
             </td>

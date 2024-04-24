@@ -5,7 +5,8 @@
             <div class="d-inline-flex" style="width:100%">
                 <a href="#">
                     <div class="info_author_photo pl-2 pt-2">
-                        <img src="{{ asset($post->user->profile ?? 'profile_default_image.jpg') }}" alt="..."
+                        
+                        <img src=" {{auth()->user()->profile ? '/storage/'.auth()->user()->profile : 'profile_default_image.jpg'}}" alt="..."
                             style="width:3rem;height:3rem" class="mr-3 rounded-circle">
                     </div>
                 </a>

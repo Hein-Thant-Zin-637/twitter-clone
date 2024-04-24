@@ -16,6 +16,7 @@
 
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/f1dd83d39c.js" crossorigin="anonymous"></script>
+    
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -37,6 +38,7 @@
     <link rel="stylesheet" href="./css/viewer.min.css">
     <link rel="stylesheet" href="./css/bootstrap-msg.css">
     <link rel="stylesheet" href="./css/site.css">
+    <link rel="stylesheet" href="./css/profile.css">
 
     <script src="./js/jquery-1.11.3.min.js.download"></script>
     <script src="./js/bootstrap.min.js.download"></script>
@@ -63,7 +65,7 @@
 
 </head>
 
-<body id="page-body" style="padding: 0px !important; overflow-y: scroll !important;">
+<body id="page-body" style="padding: 0px !important; overflow-y: scroll !important;" class="container-fluid">
     <div id="wrapper" class="ps-md-5 pe-0 p-0  w-100 ">
         <nav class="navbar fixed-bottom  align-items-start sidebar border-right d-none d-sm-block  accordion  p-0  topbar sticky-top"
             id="main-left-nav">
@@ -118,7 +120,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-0 w-auto h-auto" href="#">
+                        <a class="nav-link p-0 w-auto h-auto" href="/profile">
                             <div class="d-flex justify-content-start align-items-center  gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
                                 <object data="/svg/profile.svg" width="30" height="30">
@@ -139,14 +141,14 @@
             </div>
             <div class="d-block d-lg-none">
                 <button class="ms-3 btn btn-primary rounded-circle p-2 text-white"><img src="/svg/feather.svg"
-                        alt="" style="widh: 30px; height: 30px; color:white !important;"></button>
+                        alt="" style="width: 30px; height: 30px; color:white !important;"></button>
             </div>
             <div class="d-none d-lg-block">
                 <button class="ms-3 btn btn-primary rounded-pill w-75 p-2 fs-5 font-weight-bold"
                     data-bs-toggle="modal" data-bs-target="#postModal">Post</button>
             </div>
             <div class="d-block d-lg-none ms-5 mb-3 fixed-bottom">
-                <img src="/img/avatar2.jpeg" alt="" class="rounded-pill" style="widh: 50px; height: 50px;">
+                <img src="/img/avatar2.jpeg" alt="" class="rounded-pill" style="width: 50px; height: 50px;">
             </div>
             <div class=" d-none d-lg-block fixed-bottom  mb-3">
                 <div class="f-none d-md-block dropup-center dropup">
@@ -154,8 +156,9 @@
                         style="padding: 0.6rem">
                         <div class="d-flex flex-row gap-3">
                             <div>
-                                <img src="{{ asset(auth()->user()->profile ?? 'profile_default_image.jpg') }}"
-                                    alt="" class="rounded-pill" style="widh: 50px; height: 50px;">
+                                
+                                <img src=" {{auth()->user()->profile ? '/storage/'.auth()->user()->profile : 'profile_default_image.jpg'}}"
+                                    alt="" class="rounded-circle" style="width: 50px; height: 50px;">
                             </div>
                             <div class="rounded-pill d-flex  flex-column">
                                 <a href="https://merchantface.com/tags/office-desk"
