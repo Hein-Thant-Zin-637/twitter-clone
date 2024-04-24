@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    
+
     protected $fillable = [
         'description',
         'user_id'
@@ -24,6 +24,7 @@ class Post extends Model
     {
         return $this->hasMany(Post_Media::class);
     }
+
 
     public function user()
     {
@@ -40,8 +41,11 @@ class Post extends Model
         return $this->hasMany(Repost::class);
     }
 
+<<<<<<< HEAD
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
+=======
+>>>>>>> aede73e4ac6dca81e9a4f775d375667ecb1031c7
 }
