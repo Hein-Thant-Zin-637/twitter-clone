@@ -34,18 +34,11 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <link rel="shortcut icon" href="https://img.merchantface.com/site/favicon.ico">
-<<<<<<< HEAD
     <link rel="stylesheet" href="./css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/viewer.min.css">
     <link rel="stylesheet" href="./css/bootstrap-msg.css">
     <link rel="stylesheet" href="./css/site.css">
     <link rel="stylesheet" href="./css/profile.css">
-=======
-    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="/css/viewer.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-msg.css">
-    <link rel="stylesheet" href="/css/site.css">
->>>>>>> 98614bedc6951e1131e44aecf6980d9ccb36cad7
 
     <script src="/js/jquery-1.11.3.min.js.download"></script>
     <script src="/js/bootstrap.min.js.download"></script>
@@ -82,7 +75,7 @@
             <div class=" d-flex flex-column p-0">
                 <ul class="nav navbar-nav text-black ms-2 mt-3 d-flex flex-column" id="accordionSidebar">
                     <li class="nav-item">
-                        <a class="nav-link p-0 w-auto h-auto" href="{{ route('home') }}">
+                        <a class="nav-link p-0 w-auto h-auto" href="{{route('home')}}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
                                 <object data="/svg/home.svg" width="30" height="30">

@@ -3,14 +3,6 @@
         <a href="{{ route('postdetail', ['user_name' => $post->user->user_name, 'id' => $post->id]) }}"
             class="text-dark text-decoration-none">
             {{-- head --}}
-<<<<<<< HEAD
-            <div class="d-inline-flex" style="width:100%">
-                <a href="#">
-                    <div class="info_author_photo pl-2 pt-2">
-                        
-                        <img src=" {{auth()->user()->profile ? '/storage/'.auth()->user()->profile : 'profile_default_image.jpg'}}" alt="..."
-                            style="width:3rem;height:3rem" class="mr-3 rounded-circle">
-=======
             <article>
 
                 <div class="d-inline-flex" style="width:100%">
@@ -19,7 +11,6 @@
                             <img src="{{ asset($post->user->profile ?? 'profile_default_image.jpg') }}" alt="..."
                                 style="width:3rem;height:3rem" class="mr-3 rounded-circle">
                         </div>
->>>>>>> 98614bedc6951e1131e44aecf6980d9ccb36cad7
                     </div>
                     <div class="flex-fill pt-2">
                         <div class="d-flex">

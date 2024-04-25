@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Report extends Model
+class MessageReport extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'message',
-        'post_id',
+        'reportmessage',
+        'message_id',
     ];
-    public function post()
+
+    public function message()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Message::class);
     }
 }

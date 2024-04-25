@@ -7,15 +7,19 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $search;
+    public $search = "";
 
-    protected $queryString=['search'];
+ 
+
 
     public function render()
     {
-
+        
+       
+        $posts =  Post::where('description', 'like', '%' . $this->search . '%')->get();
         return view('livewire.search',[
-            'posts'=> Post::where('description', 'like', '%' . $this->search . '%')->get()
+            'posts'=> $posts
+            
         ]);
     }
 

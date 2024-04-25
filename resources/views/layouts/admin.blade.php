@@ -56,7 +56,7 @@
                     <i class="uil uil-user"></i>
                     <span class="link-name">User List</span>
                 </a></li>
-                <li><a href="#">
+                <li><a href="{{route('report-message-table')}}">
                     <i class="uil uil-comments"></i>
                     <span class="link-name">Message Report List</span>
                 </a></li>

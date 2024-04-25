@@ -49,10 +49,6 @@ Route::get('/post/{user_name}/status/{id}', function ($user_name, $id) {
 })->middleware('auth')->name('postdetail');
 
 
-Route::get('/home', function () {
-    return view('twitter.index');
-});
-
 
 //profile
 Route::get('/profile', function () {
@@ -73,9 +69,15 @@ Route::get('/admin/post-table',[App\Http\Controllers\PostController::class,'admi
 Route::get('/admin/post-detail/{id}',[\App\Http\Controllers\ReportController::class,'detail'])->name('post-detail');
 Route::delete('/admin/delete-post/{id}', [App\Http\Controllers\PostController::class, 'delete'])->name('delete-post');
 
-
 //admin-report-post
 Route::get('/admin/report-post-table',[App\Http\Controllers\ReportController::class,'adminReportPostTable'])->name('report-post-table');
+
+//admin-report-message
+Route::get('/admin/report-message-table',[App\Http\Controllers\MessageReportController::class,'adminReportMessageTable'])->name('report-message-table');
+Route::get('/admin/ban-span-message-user/{id}',[\App\Http\Controllers\MessageReportController::class,'banForm'])->name('ban-span-message-form');
+Route::post('/admin/ban-span-message-user',[\App\Http\Controllers\MessageReportController::class,'ban'])->name('ban-span-message-form');
+Route::delete('/admin/delete-chat/{id}', [App\Http\Controllers\MessageReportController::class, 'deleteChat'])->name('delete-chat');
+
 
 //admin-user
 Route::get('/admin/user-table',[App\Http\Controllers\BanController::class,'adminUserTable'])->name('user-table');

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Message_Media extends Model
 {
     use HasFactory;
+
+
 }

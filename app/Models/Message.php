@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     use HasFactory;
+    
+    public function media()
+    {
+        return $this->belongsTo(Message_Media::class);
+    }
+
+  
 }
