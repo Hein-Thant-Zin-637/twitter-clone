@@ -49,7 +49,7 @@
                                 <input type="hidden" name="user_id" value="{{ $user_id }}">
 
 
-                                <button class="btn btn-warning" style="height: 34px; margin:0 10px;">Delete</button>
+                                <button class="btn btn-warning" style="height: 34px; margin:0 10px;">Delete Chat</button>
                             </form>
                         </div>
                     </div>
