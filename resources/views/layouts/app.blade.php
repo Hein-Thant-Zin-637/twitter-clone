@@ -34,18 +34,11 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <link rel="shortcut icon" href="https://img.merchantface.com/site/favicon.ico">
-<<<<<<< HEAD
     <link rel="stylesheet" href="/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="/css/viewer.min.css">
     <link rel="stylesheet" href="/css/bootstrap-msg.css">
     <link rel="stylesheet" href="/css/site.css">
-=======
-    <link rel="stylesheet" href="./css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="./css/viewer.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-msg.css">
-    <link rel="stylesheet" href="./css/site.css">
-    <link rel="stylesheet" href="./css/profile.css">
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
+    <link rel="stylesheet" href="/css/profile.css">
 
     <script src="/js/jquery-1.11.3.min.js.download"></script>
     <script src="/js/bootstrap.min.js.download"></script>

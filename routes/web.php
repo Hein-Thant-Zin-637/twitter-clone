@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Controllers\RegisterConroller;
-<<<<<<< HEAD
 use App\Models\Chat;
 use App\Models\Message;
-=======
 use App\Models\Post;
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ImageUpload;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +35,6 @@ Route::get('/singin/{step}',  [App\Http\Controllers\LoginController::class,'inde
 Route::post('/singin/{step}',  [App\Http\Controllers\LoginController::class,'store']);
 
 Route::get('/logout', [App\Http\Controllers\LoginController::class,'logout'])->name('logout');
-<<<<<<< HEAD
 
 //chat
 Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat'])->name('chat');
@@ -52,9 +48,7 @@ Route::get('/imageUpload', ImageUpload::class);
 Route::get('/dashboard', function () {
     return view('admin.index');
 });
-=======
 Route::get('/addaccount', [App\Http\Controllers\LoginController::class,'addaccount'])->name('addaccount');
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
 
 Route::get('/home', function () {
     return view('twitter.index');

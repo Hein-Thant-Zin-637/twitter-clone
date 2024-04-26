@@ -3,7 +3,7 @@
 <div class="row w-100 v-body">
     <div class="col-lg-4 border-end p-0 vh-100">
         <div class="d-flex justify-content-between">
-            <div>
+            <div class="d-flex align-items-center mt-2 ms-2">
                 <h4>Messages</h4>
             </div>
             <div class="d-flex">
