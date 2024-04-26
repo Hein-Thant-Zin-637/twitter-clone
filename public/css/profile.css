@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+.background{
+    position: relative;
+}
+.coverPhoto {
+    width: 100%; /* Set width of the content div */
+    height: 200px; /* Set height of the content div */
+   
+    background-repeat: no-repeat;
+}
+.profile{
+    position: absolute;
+    left: 20px;
+    bottom: -50px;
+    height: 100px;
+    width: 100px;
+    border: solid black 3px;
+}
+
+.editCover{
+    position: absolute;
+    left: 220px;
+    top: 80px;
+    border-radius: 50% !important;
+  
+}
+
+.editProfile{
+    position: absolute;
+    left:49px;
+    bottom: -26px;
+    border-radius: 50% !important;
+    
+}
+
+.small-profile{
+    height: 50px;
+    width: 50px;
+}
+.followProfile{
+    margin-right: -7px;
+    height: 20px;
+    width: 20px;
+}

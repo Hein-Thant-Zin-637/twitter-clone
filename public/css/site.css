@@ -1,4 +1,7 @@
 /* add */
+.preview img {
+     max-height: 100px !important; 
+}
 
 .info-img-box {
     width: 100%;
@@ -27,9 +30,9 @@
     position: relative;
 }
 
-.list-group-item {
+/* .list-group-item {
     padding: 0 !important
-}
+} */
 
 .menu-icon:hover {
     background-color: #d5ddf3 !important;
@@ -170,10 +173,10 @@
 }
 
 
-
+/* 
 .nav-link div:hover {
     background-color: rgb(209, 206, 206);
-}
+} */
 
 
 
@@ -346,18 +349,18 @@ svg.disabled {
     fill: rgb(199, 196, 196);
 }
 
-.list-group-item {
+/* .list-group-item {
     padding: .75rem 1.25rem;
     background-color: #fff;
-    border: 0px;
-    border-bottom: 1px solid rgba(0, 0, 0, .125);
-}
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-top: 1px solid rgba(0, 0, 0, .125);
+} */
 
-.list-group-item:hover,
+/* .list-group-item:hover,
 .user-list-item:hover {
     background-color: #f8f9fc !important;
     cursor: pointer;
-}
+} */
 
 .v-body {
     color: rgb(15, 20, 25);

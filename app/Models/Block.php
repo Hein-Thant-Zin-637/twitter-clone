@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Block extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'block_id',
+        'blocked_id'
+    ];
 }
