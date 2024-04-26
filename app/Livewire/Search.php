@@ -7,15 +7,21 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $search;
+    public $search = "";
 
+ 
+
+<<<<<<< HEAD
     public $tagList = true;
 
     protected $queryString=['search'];
+=======
+>>>>>>> fd24ff5313590e9202fc22d32d38c0f9cdc9b161
 
     
     public function render()
     {
+<<<<<<< HEAD
         $list = Post::all();
         
         if(strlen($this->search) > 0){
@@ -27,6 +33,14 @@ class Search extends Component
         }
         return view('livewire.search',[
             'posts'=> $posts,
+=======
+        
+       
+        $posts =  Post::where('description', 'like', '%' . $this->search . '%')->get();
+        return view('livewire.search',[
+            'posts'=> $posts
+            
+>>>>>>> fd24ff5313590e9202fc22d32d38c0f9cdc9b161
         ]);
     }
 

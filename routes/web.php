@@ -1,9 +1,20 @@
 <?php
 
 use App\Http\Controllers\RegisterConroller;
+<<<<<<< HEAD
+use App\Models\Chat;
+use App\Models\Message;
+=======
 use App\Models\Post;
+<<<<<<< HEAD
 use App\Models\User;
+=======
+>>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
+>>>>>>> fd24ff5313590e9202fc22d32d38c0f9cdc9b161
 use Illuminate\Support\Facades\Route;
+use App\Livewire\ImageUpload;
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +25,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/test', function () {
+    $message = Message::find(46);
+    dd($message->media->media);
+});
 
 Route::get('/', function () {
     return view('layouts.index');
@@ -26,7 +42,23 @@ Route::get('/singin/{step}',  [App\Http\Controllers\LoginController::class,'inde
 Route::post('/singin/{step}',  [App\Http\Controllers\LoginController::class,'store']);
 
 Route::get('/logout', [App\Http\Controllers\LoginController::class,'logout'])->name('logout');
+<<<<<<< HEAD
+
+//chat
+Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat'])->name('chat');
+Route::post('/chat/{id}', [App\Http\Controllers\ChatController::class, 'conversation'])->name('conversation');
+Route::get('/chat/conversation/{sender_id}/{reciever}', [App\Http\Controllers\ChatController::class, 'conversationDetail'])->name('conversationDetail');
+Route::delete('/chat/conversation/delete/{id}', [App\Http\Controllers\ChatController::class, 'deleteConversation'])->name('deleteConversation');
+Route::post('/chat/conversation/sendMessage/{id}', [App\Http\Controllers\ChatController::class, 'sendMessage'])->name('sendMessage');
+Route::get('/imageUpload', ImageUpload::class);
+
+
+Route::get('/dashboard', function () {
+    return view('admin.index');
+});
+=======
 Route::get('/addaccount', [App\Http\Controllers\LoginController::class,'addaccount'])->name('addaccount');
+>>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
 
 Route::get('/home', function () {
     return view('twitter.index');
@@ -50,6 +82,10 @@ Route::get('/{user_name}/status/{id}', function ($user_name, $id) {
 })->middleware('auth')->name('postdetail');
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fd24ff5313590e9202fc22d32d38c0f9cdc9b161
 //profile
 Route::get('/{user_name}', function ($user_name) {
     $user = User::where('user_name',$user_name)->first();
@@ -76,9 +112,15 @@ Route::get('/admin/post-table',[App\Http\Controllers\PostController::class,'admi
 Route::get('/admin/post-detail/{id}',[\App\Http\Controllers\ReportController::class,'detail'])->name('post-detail');
 Route::delete('/admin/delete-post/{id}', [App\Http\Controllers\PostController::class, 'delete'])->name('delete-post');
 
-
 //admin-report-post
 Route::get('/admin/report-post-table',[App\Http\Controllers\ReportController::class,'adminReportPostTable'])->name('report-post-table');
+
+//admin-report-message
+Route::get('/admin/report-message-table',[App\Http\Controllers\MessageReportController::class,'adminReportMessageTable'])->name('report-message-table');
+Route::get('/admin/ban-span-message-user/{id}',[\App\Http\Controllers\MessageReportController::class,'banForm'])->name('ban-span-message-form');
+Route::post('/admin/ban-span-message-user',[\App\Http\Controllers\MessageReportController::class,'ban'])->name('ban-span-message-form');
+Route::delete('/admin/delete-chat/{id}', [App\Http\Controllers\MessageReportController::class, 'deleteChat'])->name('delete-chat');
+
 
 //admin-user
 Route::get('/admin/user-table',[App\Http\Controllers\BanController::class,'adminUserTable'])->name('user-table');

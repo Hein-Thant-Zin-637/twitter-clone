@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Message_Media extends Model
+class MessageReport extends Model
 {
     use HasFactory;
 
-<<<<<<< HEAD
-    protected $fillable = ['media'];
+    protected $fillable = [
+        'reportmessage',
+        'message_id',
+    ];
 
     public function message()
     {
         return $this->belongsTo(Message::class);
     }
-=======
-
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
 }

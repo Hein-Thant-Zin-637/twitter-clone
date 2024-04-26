@@ -4,6 +4,7 @@
                 src="/svg/search.svg" alt="" style="width: 23px; height: 23px;"></span>
         <input wire:model.live="search"  type="search" class="form-control shadow-none border-0 bg-gray-100 rounded-pill"
             placeholder="Search" >
+            
     </div>
     @if($tagList)
     {{-- tag --}}

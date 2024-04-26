@@ -25,6 +25,7 @@ class BanController extends Controller
 
     public function banForm($id)
     {
+    
         $data = User::find($id);
 
         return view('admin.banUser', [

@@ -82,8 +82,8 @@
             <select class="form-select" id="message" name="message" aria-label="Default select example">
                 <option  disabled>Open this select menu</option>
                 <option name="message" value="Deleting for cringe">Deleting for cringe</option>
-                <option name="message" value="2">Two</option>
-                <option name="message" value="3">Three</option>
+                <option name="message" value="Deleting for span">Deleting for send nude</option>
+                <option name="message" value="Deleting for send nude">Deleting for send nude</option>
             </select>
 
             <button class="btn btn-warning" style="height: 34px; margin:0 10px;">Delete</button>

@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('message__media', function (Blueprint $table) {
+        Schema::create('message_reports', function (Blueprint $table) {
             $table->id();
-            $table->string('media');
+            $table->string('reportmessage');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+
+            $table->foreignId('message_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
+       
     }
 
     /**
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('message__media');
+        //
     }
 };
