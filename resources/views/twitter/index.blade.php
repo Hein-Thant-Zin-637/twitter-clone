@@ -6,13 +6,13 @@
         <div class="col-lg-8 col-md-12 border-end px-1">
             <div class="row w-100  sticky-top text-bg-light  mb-3" style="margin-left :0.3px;">
                 <ul class="nav bg-white p-1" id="pills-tab" role="tablist">
-                    <li class="nav-item col-6" role="presentation">
-                        <button class="nav-link text-center fs-5 w-100 text-dark p-0 active" id="pills-home-tab"
+                    <li class="nav-item col-6 w-100 p-2 d-flex justify-content-center" role="presentation">
+                        <button class="nav-link text-center fs-5 px-3 text-dark p-0 active" id="pills-home-tab"
                             data-bs-toggle="pill" data-bs-target="#for-you" type="button" role="tab"
                             aria-controls="pills-home" aria-selected="true">For you</button>
                     </li>
-                    <li class="nav-item col-6" role="presentation">
-                        <button class="nav-link text-center fs-5 w-100 text-dark p-0" id="pills-profile-tab"
+                    <li class="nav-item col-6 w-100 p-2 d-flex justify-content-center" role="presentation">
+                        <button class="nav-link text-center fs-5  text-dark p-0" id="pills-profile-tab"
                             data-bs-toggle="pill" data-bs-target="#following" type="button" role="tab"
                             aria-controls="pills-profile" aria-selected="false">Following</button>
                     </li>

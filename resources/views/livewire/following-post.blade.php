@@ -6,6 +6,6 @@
         @if ((auth()->user()?->hasMute($post->user_id)))
         @continue
     @endif
-        <livewire:post-show :post="$post">
+        <livewire:post-show :post="$post" :key="$post->id">
     @endforeach
 </div>

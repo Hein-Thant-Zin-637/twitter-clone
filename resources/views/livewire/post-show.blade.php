@@ -3,34 +3,24 @@
         <a href="{{ route('postdetail', ['user_name' => $post->user->user_name, 'id' => $post->id]) }}"
             class="text-dark text-decoration-none">
             {{-- head --}}
-<<<<<<< HEAD
-            <div class="d-inline-flex" style="width:100%">
-                <a href="#">
-                    <div class="info_author_photo pl-2 pt-2">
-                        
-                        <img src=" {{auth()->user()->profile ? '/storage/'.auth()->user()->profile : 'profile_default_image.jpg'}}" alt="..."
-                            style="width:3rem;height:3rem" class="mr-3 rounded-circle">
-=======
             <article>
-
                 <div class="d-inline-flex" style="width:100%">
-                    <div onclick="window.location.href = {{ route('home') }}">
-                        <div class="info_author_photo pl-2 pt-2">
-                            <img src="{{ asset($post->user->profile ?? 'profile_default_image.jpg') }}" alt="..."
+                    <div>
+                        <button type="button" onclick="event.preventDefault();window.location='{{ route('profile',$post->user->user_name) }}'" class="info_author_photo bg-white border-0 pl-2 pt-2">
+                            <img src="{{ $post->user->profile ? '/storage/'.$post->user->profile : 'profile_default_image.jpg'}}" alt="..."
                                 style="width:3rem;height:3rem" class="mr-3 rounded-circle">
-                        </div>
->>>>>>> 98614bedc6951e1131e44aecf6980d9ccb36cad7
+                        </button>
                     </div>
                     <div class="flex-fill pt-2">
                         <div class="d-flex">
                             <div class="d-flex info_author">
                                 <div style="align-items: center;">
                                     <div class="d-flex flex-row gap-1 mt-2">
-                                        <div href="#"class="text-a">
+                                        <button type="button" onclick="event.preventDefault();window.location='{{ route('profile',$post->user->user_name) }}'"  class="text-a bg-white border-0 pb-3 fs-6">
                                             <div style="line-height:100%">
                                                 <span class="v-text-s">{{ $post->user->name }}</span>
                                             </div>
-                                        </div>
+                                        </button>
                                         <div class="pl-2 text-m">
                                             <span class="text-to">{{ $post->user->user_name }}</span>
                                         </div>
@@ -71,6 +61,7 @@
             <div>
                 <livewire:post-footer :post="$post">
             </div>
+            
         </article>
     </a>
 

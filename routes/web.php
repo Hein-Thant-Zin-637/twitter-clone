@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RegisterConroller;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -43,21 +44,23 @@ Route::get('/bookmark', function () {
     return view('twitter.bookmark');
 })->middleware('auth')->name('bookmark');
 
-Route::get('/post/{user_name}/status/{id}', function ($user_name, $id) {
+Route::get('/{user_name}/status/{id}', function ($user_name, $id) {
     $post = Post::find($id);
     return view('twitter.show',[ 'post'=>$post ]);
 })->middleware('auth')->name('postdetail');
 
 
-Route::get('/home', function () {
-    return view('twitter.index');
-});
-
-
 //profile
-Route::get('/profile', function () {
-    return view('twitter.profile');
-});
+Route::get('/{user_name}', function ($user_name) {
+    $user = User::where('user_name',$user_name)->first();
+    if((auth()->user()?->hasBlock($user->id))){
+        return back();
+    }elseif((auth()->user()?->hasBlocked($user->id))){
+        return back();
+    }else{
+        return view('twitter.profile',[ 'user' => $user]);
+    }
+})->middleware('auth')->name('profile');
 
 Route::post('/update-profile',[\App\Http\Controllers\UserController::class,'update'])->name('update-profile');
 

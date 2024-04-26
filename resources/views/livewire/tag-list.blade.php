@@ -6,7 +6,7 @@
     <div class="d-flex align-items-center p-2 tagdiv">
         <div>
             <div class="v-text">
-                <a href="https://merchantface.com/tags/office-desk" class="text-a fs-6">{{ $tag->name }}</a>
+                <a href="/explore?search={{ substr($tag->name, 1) }}" class="text-a fs-6">{{ $tag->name }}</a>
             </div>
             <div class="d-flex">
                 <div class="text-ms"><span>{{$tag->posts->count()}}</span>&nbsp;posts</div>

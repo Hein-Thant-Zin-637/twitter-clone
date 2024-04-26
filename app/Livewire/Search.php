@@ -9,13 +9,24 @@ class Search extends Component
 {
     public $search;
 
+    public $tagList = true;
+
     protected $queryString=['search'];
 
+    
     public function render()
     {
-
+        $list = Post::all();
+        
+        if(strlen($this->search) > 0){
+            $this->tagList = false;
+            $posts = Post::where('description', 'like', '%' . $this->search . '%')->get();
+        }else{
+            $this->tagList = true;
+            $posts = $list;
+        }
         return view('livewire.search',[
-            'posts'=> Post::where('description', 'like', '%' . $this->search . '%')->get()
+            'posts'=> $posts,
         ]);
     }
 

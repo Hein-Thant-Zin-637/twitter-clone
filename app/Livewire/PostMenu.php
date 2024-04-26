@@ -40,11 +40,13 @@ class PostMenu extends Component
             'post_id' => $post_id,
             'user_id' => auth()->user()->id,
         ]);
+        $this->dispatch('refreshPins');
     }
 
     public function unpin(int $post_id)
     {
         Pin::where('user_id', auth()->user()->id)->where('post_id', $post_id)->delete();
+        $this->dispatch('refreshPins');
     }
 
     public function follow(int $user_id)

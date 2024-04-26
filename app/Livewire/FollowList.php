@@ -20,6 +20,7 @@ class FollowList extends Component
     {
         $this->users = User::all();
     }
+    
     public function render()
     {
         return view('livewire.follow-list');

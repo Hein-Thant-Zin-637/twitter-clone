@@ -9,7 +9,7 @@ use Livewire\Component;
 class ForyouPost extends Component
 {
     public $posts;
-    
+
     protected $listeners = ['refreshPosts' => 'refreshData'];
 
     
