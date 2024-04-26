@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('message_media', function (Blueprint $table) {
+        Schema::create('message__media', function (Blueprint $table) {
             $table->id();
             $table->string('media');
             $table->timestamps();

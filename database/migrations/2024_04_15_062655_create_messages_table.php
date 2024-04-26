@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('chat_id')->constrained()->cascadeOnDelete();
             $table->unsignedBigInteger('sender_id');
             $table->unsignedBigInteger('receiver_id');
-            $table->text('message');
-            $table->unsignedBigInteger('media_id');
+            $table->text('message')->nullable();
+            $table->unsignedBigInteger('media_id')->nullable();
             $table->timestamps();
 
             // Define foreign keys

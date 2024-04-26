@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function hasChat($id)
+    {
+        $me = auth()->user()->id;
+        return Chat::where(function ($query) use ($me, $id) {
+            $query->where('user_one', $me)->where('user_two', $id)
+                ->orWhere('user_one', $id)->where('user_two', $me);
+        })->exists();
+    }
+   
 }
