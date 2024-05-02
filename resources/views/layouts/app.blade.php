@@ -24,6 +24,9 @@
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="/css/style.css">
 
+    <!----======== profile ======== -->
+    <link rel="stylesheet" href="/css/profile.css">
+
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
@@ -96,7 +99,12 @@
                         <a class="nav-link p-0 w-auto h-auto" href="{{ route('notification') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
-                                <object data="/svg/notification.svg" width="30" height="30">
+                                <span class="position-relative">
+                                    <object data="/svg/notification.svg" width="30" height="30"></object>
+                                    @if(auth()->user()->hasNotification()->count() > 0)
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{auth()->user()->hasNotification()->count()}}</span>
+                                    @endif
+                                </span>
                                 </object><span>&nbsp;Notification</span>
                             </div>
                         </a>
@@ -120,7 +128,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-0 w-auto h-auto" href="/profile">
+                        <a class="nav-link p-0 w-auto h-auto" href="{{ route('profile',auth()->user()->user_name) }}">
                             <div class="d-flex justify-content-start align-items-center  gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
                                 <object data="/svg/profile.svg" width="30" height="30">
@@ -161,7 +169,7 @@
                                     alt="" class="rounded-circle" style="width: 50px; height: 50px;">
                             </div>
                             <div class="rounded-pill d-flex  flex-column">
-                                <a href="https://merchantface.com/tags/office-desk"
+                                <a href="#"
                                     class="fs-5 font-weight-bold text-decoration-none text-dark">{{ auth()->user()->name }}</a>
                                 <p class="m-0 text-muted">{{ auth()->user()->user_name }}</p>
                             </div>

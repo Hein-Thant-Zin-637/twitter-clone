@@ -7,20 +7,6 @@
                 <div class="sticky-top" style="top:-470px;z-index: 999;">
                     <livewire:search>
                 </div>
-                {{-- tag --}}
-                <div class="card border-0 rounded-4 mb-3 mt-3">
-                    <div class="card-header   border-0 " style="font-size:1.25rem;font-weight: 700;">Popular tags</div>
-                    <div class="card-body p-2 border-0" style="background-color:#f8f9fc">
-                        <div>
-                            <livewire:tag-list>
-                        </div>
-                        <div class="card-footer  border-0 text-info">Show more...</div>
-                    </div>
-
-                </div>
-                <div class="m-2">
-                    <livewire:foryou-post>
-                </div>
             </div>
         </div>
             <div class="col-lg-4 mb-4 pr-0 mt-2">

@@ -62,12 +62,17 @@ class User extends Authenticatable
    
     public function hasPin(int $post_id)
     {
-        return $this->Pin()->where('post_id',$post_id)->exists();
+        return $this->pins()->where('post_id',$post_id)->exists();
     }
 
-    public function Pin()
+    public function pins()
     {
-        return $this->hasMany(Pin::class);
+        return $this->belongsToMany(Post::class , 'pins')->withTimestamps();
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
     public function hasBookmark(int $post_id)
@@ -82,10 +87,10 @@ class User extends Authenticatable
 
     public function hasLike(int $post_id)
     {
-        return $this->like()->where('post_id',$post_id)->exists();
+        return $this->likes()->where('post_id',$post_id)->exists();
     }
 
-    public function like()
+    public function likes()
     {
         return $this->belongsToMany(Post::class , 'likes')->withTimestamps();
     }
@@ -138,18 +143,27 @@ class User extends Authenticatable
 
     public function hasRepost(int $post_id)
     {
-        return $this->repost()->where('post_id',$post_id)->exists();
+        return $this->reposts()->where('post_id',$post_id)->exists();
     }
 
-    public function repost()
+    public function reposts()
     {
         return $this->belongsToMany(Post::class , 'reposts')->withTimestamps();
     }
 
-    public function post()
+    public function isRead(int $id)
     {
-        return $this->hasMany(Post::class);
+        return $this->notification()->where('id',$id)->pluck('is_read')->first();
     }
 
+    public function hasNotification()
+    {
+        return $this->notification()->where('is_read',false)->get();
+    }
+
+    public function notification()
+    {
+        return $this->hasMany(Notification::class);
+    }
     
 }

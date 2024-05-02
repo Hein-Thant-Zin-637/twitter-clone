@@ -9,7 +9,7 @@ class BookmarkPost extends Component
 {
     public $posts;
     
-    protected $listeners = ['refreshBookmark' => 'refreshData'];
+    protected $listeners = ['refreshBookmarks' => 'refreshData'];
 
     public function mount()
     {

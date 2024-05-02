@@ -29,7 +29,7 @@
                         <div class="ml-2 ms-1"><span>UnPin Post</span></div>
                     </button>
                 @else
-                    <button wire:click="pin({{ $post->id }})"
+                    <button wire:click.prevent="pin({{ $post->id }})"
                         class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
                         <div>
                             <img src="/svg/pin.svg" alt="" style="width: 23px; height: 23px;">
@@ -91,11 +91,31 @@
                 </button>
             </div>
             <div>
-                <livewire:report :post="$post" />
+                <button type="button" onclick="event.preventDefault()"  data-toggle="modal" data-target="#reportModal{{ $post->id }}"
+                    class="bg-white border-0 d-flex align-items-center div-info-more-item dropdown-item">
+                    <div>
+                        <img src="/svg/report.svg" alt="" style="width: 23px; height: 23px;">
+                    </div>
+                    <div class="ml-2"><span>Report Post</span></div>
+                </button>
             </div>
-
-
         @endif
-
+    </div>
+    {{-- Repor Modal --}}
+    <div class="modal fade" id="reportModal{{ $post->id }}" tabindex="-1" aria-labelledby="reportModallable"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div>
+                    <button type="button" class="close float-start fs-3 m-3 mb-0" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <livewire:report :post="$post">
+                </div>
+            </div>
+        </div>
     </div>
 </div>

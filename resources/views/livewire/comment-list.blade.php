@@ -1,9 +1,9 @@
 <div style="display: flex; flex-direction: column;">
-    @foreach ($comments as $comment)
+    @forelse ($comments as $comment)
     <div  class="mb-3 w-100" id="{{ $comment->id }}" >
         <div onclick="window.location.href = {{ route('home') }}">
             <div class="info_author_photo pl-2 pt-2">
-                <img src="{{ asset($comment->user->profile ?? 'profile_default_image.jpg') }}" alt="..."
+                <img src="{{ $comment->user->profile ? '/storage/'.$comment->user->profile : 'profile_default_image.jpg' }}" alt="..."
                     style="width:3rem;height:3rem" class="mr-3 rounded-circle">
             </div>
         </div>
@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <div class="pl-2 text-m">
-                                <span class="text-to">{{ $comment->user->user_name }}</span>
+                                <span class="text-to">{{ "@".$comment->user->user_name }}</span>
                             </div>
                             <div class="pl-2">
                                 <p class="text-muted">{{ $comment->created_at->diffForHumans() }}</p>
@@ -31,5 +31,7 @@
             <div class="info-intro">{{ $comment->content }}</div>
         </div>
     </div>
-    @endforeach
+    @empty
+    <p>No Comments</p>
+    @endforelse
 </div>

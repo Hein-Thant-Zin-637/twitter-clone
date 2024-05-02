@@ -4,6 +4,8 @@ use App\Http\Controllers\RegisterConroller;
 use App\Models\Chat;
 use App\Models\Message;
 use App\Models\Post;
+
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ImageUpload;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +40,7 @@ Route::get('/logout', [App\Http\Controllers\LoginController::class,'logout'])->n
 
 //chat
 Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat'])->name('chat');
-Route::post('/chat/{id}', [App\Http\Controllers\ChatController::class, 'conversation'])->name('conversation');
+Route::get('/chat/{id}', [App\Http\Controllers\ChatController::class, 'conversation'])->name('conversation');
 Route::get('/chat/conversation/{sender_id}/{reciever}', [App\Http\Controllers\ChatController::class, 'conversationDetail'])->name('conversationDetail');
 Route::delete('/chat/conversation/delete/{id}', [App\Http\Controllers\ChatController::class, 'deleteConversation'])->name('deleteConversation');
 Route::post('/chat/conversation/sendMessage/{id}', [App\Http\Controllers\ChatController::class, 'sendMessage'])->name('sendMessage');
@@ -66,7 +68,7 @@ Route::get('/bookmark', function () {
     return view('twitter.bookmark');
 })->middleware('auth')->name('bookmark');
 
-Route::get('/post/{user_name}/status/{id}', function ($user_name, $id) {
+Route::get('/{user_name}/status/{id}', function ($user_name, $id) {
     $post = Post::find($id);
     return view('twitter.show',[ 'post'=>$post ]);
 })->middleware('auth')->name('postdetail');
@@ -74,9 +76,16 @@ Route::get('/post/{user_name}/status/{id}', function ($user_name, $id) {
 
 
 //profile
-Route::get('/profile', function () {
-    return view('twitter.profile');
-});
+Route::get('/{user_name}', function ($user_name) {
+    $user = User::where('user_name',$user_name)->first();
+    if((auth()->user()?->hasBlock($user->id))){
+        return back();
+    }elseif((auth()->user()?->hasBlocked($user->id))){
+        return back();
+    }else{
+        return view('twitter.profile',[ 'user' => $user]);
+    }
+})->middleware('auth')->name('profile');
 
 Route::post('/update-profile',[\App\Http\Controllers\UserController::class,'update'])->name('update-profile');
 

@@ -3,14 +3,11 @@
 <div class="row w-100 v-body">
     <div class="col-lg-4 border-end p-0 vh-100">
         <div class="d-flex justify-content-between">
-            <div>
+            <div class="d-flex align-items-center mt-2 ms-2">
                 <h4>Messages</h4>
             </div>
             <div class="d-flex">
-                <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#">
-                    <i class="fa-solid fa-gear"></i>
-                </button>
-                <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-dark btn-sm messenger-menu m-2 rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
@@ -20,20 +17,20 @@
             @foreach ($chatArray as $chatz)
                 @if ($chatz->user_one == auth()->user()->id || $chatz->user_two == auth()->user()->id)
                 @php
-                    $reciever = $chatz->user_one == auth()->user()->id ? $chatz->user_two : $chatz->user_one;
+                    $reciever = $chatz->user_one == auth()->user()->id ? $chatz->userTwo : $chatz->userOne;
                 @endphp
                 <div class="d-flex justify-content-between">
-                    <a class="d-flex justify-content-between ms-0 text-decoration-none" href="/chat/conversation/{{ $chatz->id }}/{{ $reciever }}">
+                    <form class="d-flex justify-content-between ms-0 text-decoration-none" action="/chat/conversation/{{ $chatz->id }}/{{ $reciever->id }}" >
                         @csrf
                         <button class="text-left border-0 fs-5 p-2" style="width: 300px !important; background-color: white;" type="submit">
                             <img class="rounded-circle small-profile" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="photo">
-                            {{ $chatz->userTwo->name }}
-                            <small class="fw-light fs-6"> @ {{ $chatz->userTwo->user_name }}</small>
+                            {{ $reciever->name }}
+                            <small class="fw-light fs-6"> @ {{ $reciever->user_name }}</small>
                         </button>
-                    </a>
+                    </form>
     
                     <div class="dropdown chat-select-menu">
-                        <button class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-light rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-ellipsis"></i>
                         </button>
                         <ul class="dropdown-menu">
@@ -58,6 +55,12 @@
         </div>
     </div>
 
+    {{-- conversation detail --}}
+    <div class="col-lg-8 col-md-12 p-0 mt-2">
+        <div class="d-flex justify-content-center align-items-center vh-100">
+            <h1>Start a new conversation</h1>
+        </div>
+    </div>
 </div>
 
   <!-- Modal -->
@@ -81,14 +84,13 @@
                 @if($user->hasChat($user->id))
                     @continue
                 @else
-                <form class="d-flex justify-content-between border p-2" method="POST" action="{{ route('conversation', $user->id) }}">
-                    @csrf
+                <a class="d-flex justify-content-between border p-2" href="{{ route('conversation', $user->id) }}">
                     <div>
                         <img class="rounded-circle small-profile" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="photo">
                         {{ $user->name }}
                     </div>
                     <button type="submit" class="btn btn-sm btn-primary rounded-pill">Chat</button>
-                </form>
+                </a>
                 @endif
 
             @endforeach

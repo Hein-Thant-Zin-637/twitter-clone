@@ -6,10 +6,12 @@
                     <div class="d-inline-flex justify-content-end pe-3 chat-time">{{ $message->time($message->id) }}</div>
                     <div class="d-inline-flex justify-content-end p-2">
                         <div class="d-flex flex-column">
-                            <img width="300px" height="300px" class="rounded mb-1" src="{{ "/storage/" . $message->media->media }}" alt="image">
+                            <img width="300px" height="300px" class="rounded" src="{{ "/storage/" . $message->media->media }}" alt="image">
+                            <div class="d-inline-flex justify-content-end pt-1">
                                 @if ($message->message != null)
-                                    <div class="bg-primary fs-6 text-white p-2 sender-radius text-end">{{ $message->message }}</div>
+                                    <div class="bg-primary fs-6 text-white p-2 sender-radius">{{ $message->message }}</div>
                                 @endif
+                            </div>
                         </div>
                     </div>
                     @else
@@ -23,10 +25,12 @@
                     <div class="d-inline-flex justify-content-start ps-3 chat-time">{{ $message->time($message->id) }}</div>
                         <div class="d-inline-flex justify-content-start p-2">
                             <div class="d-flex flex-column">
-                                <img width="300px" height="300px" class="rounded mb-1" src="{{ "/storage/" . $message->media->media }}" alt="image">
-                                @if ($message->message != null)
-                                <div class="bg-light fs-6 p-2 receiver-radius">{{ $message->message }}</div>
-                                @endif
+                                <img width="300px" height="300px" class="rounded" src="{{ "/storage/" . $message->media->media }}" alt="image">
+                                <div class="d-inline-flex justify-content-end pt-1">
+                                    @if ($message->message != null)
+                                        <div class="bg-light fs-6 p-2 receiver-radius">{{ $message->message }}</div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     @else
@@ -37,6 +41,10 @@
                     @endif
                 @endif  
         @endforeach
+        <div class="text-center mt-4">
+            <img class="rounded-circle small-profile ms-1" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="">
+            <h4>{{ $reciever->name }}</h4>
+        </div>
     </div>
     
     <div class="d-flex justify-content-between fixed-bottom chat-foot border-top pt-1 pb-1 bg-light fs-5">    

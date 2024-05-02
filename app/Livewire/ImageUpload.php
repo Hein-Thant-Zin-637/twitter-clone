@@ -12,7 +12,7 @@ use Carbon\Carbon;
 class ImageUpload extends Component
 {
     use WithFileUploads;
-    public $image, $message, $chat;
+    public $image, $message, $chat, $reciever;
     public $hasMessage = true;
 
     public function render()
@@ -41,7 +41,7 @@ class ImageUpload extends Component
                 'receiver_id' => $this->chat->user_two,
                 'message' => $this->message,
             ]);
-            $this->resetExcept('chat');
+            $this->resetExcept('chat','reciever');
         }
         elseif($this->message == null)
         {
@@ -55,7 +55,7 @@ class ImageUpload extends Component
                 'receiver_id' => $this->chat->user_two,
                 'media_id' => $media_id->id,
             ]);
-            $this->resetExcept('chat');
+            $this->resetExcept('chat','reciever');
         }
         else{
             $path = $this->image->store('media', 'public');
@@ -69,7 +69,7 @@ class ImageUpload extends Component
                 'message' => $this->message,
                 'media_id' => $media_id->id,
             ]);
-            $this->resetExcept('chat');   
+            $this->resetExcept('chat','reciever');   
 
         }
     }
