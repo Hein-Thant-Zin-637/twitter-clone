@@ -19,7 +19,6 @@
                 </ul>
             </div>
             <div class="m-2">
-                <livewire:new-post>
             </div>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="for-you" role="tabpanel" aria-labelledby="pills-home-tab"

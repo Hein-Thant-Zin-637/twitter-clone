@@ -106,8 +106,9 @@
                                     <input type="hidden" name="name" value="{{ old('name') }}">
                                     <input type="hidden" name="email" value="{{ old('email') }}">
                                     <input type="hidden" name="phone" value="{{ old('phone') }}">
-                                    <input type="hidden" name="dob"
-                                        value="{{ old('year') . '-' . old('month') . '-' . old('day') }}">
+                                    <input type="hidden" name="year" value="{{ old('year') }}">
+                                    <input type="hidden" name="month" value="{{ old('month') }}">
+                                    <input type="hidden" name="day" value="{{ old('day') }}">
                                 </div>
                             </div>
                         @endif

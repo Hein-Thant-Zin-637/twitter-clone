@@ -31,9 +31,7 @@
                     <label for="image"><img src="/svg/image.svg" alt="image" style="width: 23px; height: 23px; "></label>
                     <input type="file" id="image" class="image" multiple wire:model="images"
                         style="display: none">
-                    <a href="">
-                        <img src="/svg/emoji.svg" alt="" style="width: 25px; height: 25px;">
-                    </a>
+                    
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary rounded-pill"

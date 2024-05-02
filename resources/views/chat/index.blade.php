@@ -88,12 +88,12 @@
                 @if($user->hasChat($user->id))
                     @continue
                 @else
-                <a class="d-flex justify-content-between border p-2 text-decoration-none text-dark px-4" href="{{ route('conversation', $user->id) }}">
+                <a class="d-flex justify-content-between border p-2 text-decoration-none text-dark px-4 mt-1" href="{{ route('conversation', $user->id) }}">
                     <div>
                         <img class="rounded-circle small-profile" src="{{ $user->profile ?? '/profile_default_image.jpg'}}" alt="photo">
                         {{ $user->name }}
                     </div>
-                    <button type="submit" class="btn btn-sm btn-primary rounded-pill">Chat</button>
+                    <button type="submit" class="btn btn-sm btn-primary rounded-pill px-4">Chat</button>
                 </a>
                 @endif
 

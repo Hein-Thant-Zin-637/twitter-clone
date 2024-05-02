@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
+
 class RegisterController extends Controller
 {
 
@@ -24,6 +25,7 @@ class RegisterController extends Controller
 
     public function handleGoogleCallback()
     {
+        
         $googleUser = Socialite::driver('google')->stateless()->user();
         $user = User::where('email', $googleUser->email)->first();
         $dateOfBirth = $googleUser->user['birthdate'] ?? null;
@@ -100,7 +102,7 @@ class RegisterController extends Controller
                     $username = $this->generateUsername($name);
                 }
             }
-
+            $dob = $request->input('year') .'-' .$request->input('month').'-'.$request->input('day');
             if ($error != null) {
                 return back()->withInput($request->input())->withErrors($error);
             } else {
@@ -109,7 +111,7 @@ class RegisterController extends Controller
                 $user->user_name = $username;
                 $user->email = $request->input('email');
                 $user->phone = $request->input('phone');
-                $user->dob = $request->input('dob');
+                $user->dob = $dob;
                 $user->password = Hash::make($request->input('password'));
                 $user->save();
                 Auth ::login($user);

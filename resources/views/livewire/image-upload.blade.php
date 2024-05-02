@@ -33,8 +33,8 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="dropdown chat-select-menu ms-1">
-                                    <button class="btn btn-light rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="dropdown ms-1">
+                                    <button class="btn btn-sm rounded-circle shadow-none border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-ellipsis"></i>
                                     </button>
                                     <ul class="dropdown-menu">
@@ -81,8 +81,8 @@
                         <div class="d-inline-flex justify-content-start ps-3 chat-time">{{ $message->time($message->id) }}</div>
                         <div class="d-inline-flex justify-content-start p-2">
                             <span class="bg-light fs-6 p-2 receiver-radius">{{ $message->message }}</span>
-                            <div class="dropdown chat-select-menu ms-1">
-                                <button class="btn btn-light rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="dropdown ms-1">
+                                <button class="btn btn-sm rounded-circle shadow-none border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-ellipsis"></i>
                                 </button>
                                 <ul class="dropdown-menu">
