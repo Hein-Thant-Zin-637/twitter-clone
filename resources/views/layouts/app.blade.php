@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="/css/viewer.min.css">
     <link rel="stylesheet" href="/css/bootstrap-msg.css">
     <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/profile.css">
 
     <script src="/js/jquery-1.11.3.min.js.download"></script>
     <script src="/js/bootstrap.min.js.download"></script>

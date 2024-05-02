@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class ChatController extends Controller
 {
@@ -30,31 +31,46 @@ class ChatController extends Controller
     }
 
     public function conversation($id)
-    {
-        $users = User::all();
-        $receiver = $id;
-        $id = auth()->user()->id;
+    {   
+        $condition = false;
+        $hasChat = Chat::where('user_one', $id)->where('user_two', auth()->user()->id)->
+        orWhere('user_one', auth()->user()->id)->where('user_two', $id)->first();
 
-        Chat::create([
-            'user_one' => $id,
-            'user_two' => $receiver,
-        ]);
+        if($hasChat != null)
+        {   
 
-        $chatArray = Chat::all();
-        $conversation = false;
-        foreach($chatArray as $chat)
-        {
-            if($chat->user_one == $id || $chat->user_two == $id)
-            {
-                $conversation = true;
-            }
-            else{
-                continue;
-            }
-            
+            return redirect()->route('conversationDetail', ['sender_id' => $hasChat->id, 'reciever' => (int)$id]);
+            // $this->conversationDetail($hasChat->id, (int)$id);
         }
-        // return redirect()->back()->with(['id' => $id, 'users' => $users, 'chatArray'=> $chatArray, 'conversation' => $conversation, 'receiver' => $receiver]);
-        return view('chat/index', ['id' => $id, 'users' => $users, 'chatArray'=> $chatArray, 'conversation' => $conversation, 'receiver' => $receiver]);
+        else{
+            $users = User::all();
+            $receiver = $id;
+            $id = auth()->user()->id;
+    
+            $newChat = Chat::create([
+                'user_one' => $id,
+                'user_two' => $receiver,
+            ]);
+    
+            $chatArray = Chat::all();
+            $conversation = false;
+            $condition = true;
+            foreach($chatArray as $chat)
+            {
+                if($chat->user_one == $id || $chat->user_two == $id)
+                {
+                    $conversation = true;
+                }
+                else{
+                    continue;
+                }
+                
+            }
+            // return redirect()->back()->with(['id' => $id, 'users' => $users, 'chatArray'=> $chatArray, 'conversation' => $conversation, 'receiver' => $receiver]);
+            // return view('chat/index', ['id' => $id, 'users' => $users, 'chatArray'=> $chatArray, 'conversation' => $conversation, 'receiver' => $receiver, 'condition' => $condition]);
+            // return Http::post(route('chat/index'));
+            return redirect()->route('conversationDetail', ['sender_id' => $newChat->id, 'reciever' => $receiver]);
+        }
 
     }
     public function deleteConversation($chat_id)
@@ -63,7 +79,7 @@ class ChatController extends Controller
         return redirect()->route('chat');
     }
 
-    public function conversationDetail($chat_id, $receiver, Request $request)
+    public function conversationDetail($chat_id, $receiver)
     {
         $sender_id = auth()->user()->id;
         $message = Message::where('chat_id', $chat_id)->get();

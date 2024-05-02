@@ -45,7 +45,7 @@ Route::get('/logout', [App\Http\Controllers\LoginController::class,'logout'])->n
 
 //chat
 Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat'])->name('chat');
-Route::post('/chat/{id}', [App\Http\Controllers\ChatController::class, 'conversation'])->name('conversation');
+Route::get('/chat/{id}', [App\Http\Controllers\ChatController::class, 'conversation'])->name('conversation');
 Route::get('/chat/conversation/{sender_id}/{reciever}', [App\Http\Controllers\ChatController::class, 'conversationDetail'])->name('conversationDetail');
 Route::delete('/chat/conversation/delete/{id}', [App\Http\Controllers\ChatController::class, 'deleteConversation'])->name('deleteConversation');
 Route::post('/chat/conversation/sendMessage/{id}', [App\Http\Controllers\ChatController::class, 'sendMessage'])->name('sendMessage');

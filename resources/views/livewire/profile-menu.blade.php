@@ -130,9 +130,13 @@
                 </div>
             </div>
             <div>
-                <a href="#" class="border border-dark p-2 rounded-circle">
-                    <img src="/svg/message.svg" alt="" style="width: 20px; height: 20px;">
-                </a>
+                <form action="{{ route('conversation', $user->id) }}">
+                    @csrf
+                    <button type="submit" class="border border-dark p-2 rounded-circle">
+                        <img src="/svg/message.svg" alt="" style="width: 20px; height: 20px;">
+                    </button>
+                </form>
+
             </div>
             <div>
                 <livewire:follow-button :user="$user">
