@@ -7,7 +7,7 @@
                 <div class="d-inline-flex" style="width:100%">
                     <div>
                         <button type="button" onclick="event.preventDefault();window.location='{{ route('profile',$post->user->user_name) }}'" class="info_author_photo bg-white border-0 pl-2 pt-2">
-                            <img src="{{ $post->user->profile ? '/storage/'.$post->user->profile : 'profile_default_image.jpg'}}" alt="..."
+                            <img src="{{ $post->user->profile ?? '/profile_default_image.jpg'}}" alt="..."
                                 style="width:3rem;height:3rem" class="mr-3 rounded-circle">
                         </button>
                     </div>

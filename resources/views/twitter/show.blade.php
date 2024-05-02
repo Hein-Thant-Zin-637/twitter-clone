@@ -79,4 +79,15 @@
             $('.modal-backdrop').hide();
         })
     </script>
+    <script>
+        function copyToClipboard(link) {
+            console.log(link);
+            event.preventDefault();
+    
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(link).select();
+            document.execCommand('copy');
+        }
+    </script>
 @endsection

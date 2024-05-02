@@ -13,7 +13,7 @@
         style="padding: 0.6rem">
         <div class="d-flex flex-row gap-3">
             <button type="button" onclick="event.preventDefault();window.location='{{ route('profile',$user->user_name) }}'"  class="info_author_photo bg-gray-100 border-0 pl-2 pt-2">
-                <img src="{{ $user->profile ? '/storage/'.$user->profile : 'profile_default_image.jpg' }}" alt=""
+                <img src="{{ $user->profile ?? '/profile_default_image.jpg' }}" alt=""
                     class="rounded-pill" style="widh: 50px; height: 50px;">
             </button>
             <div class="rounded-pill d-flex flex-column">

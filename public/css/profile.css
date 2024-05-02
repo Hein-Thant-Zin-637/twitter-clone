@@ -48,3 +48,10 @@
 .nav-item .active{
     border-bottom: 2px solid #0d6efd;
 }
+.nav-settings button{
+    text-align: start;
+    color: black;
+}
+.nav-settings .active{
+    border-right: 2px solid #0d6efd;
+}

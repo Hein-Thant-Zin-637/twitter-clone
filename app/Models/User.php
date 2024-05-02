@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'user_name',
+        'google_id',
         'phone',
         'bio',
         'location',
@@ -51,7 +52,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-<<<<<<< HEAD
     public function hasChat($id)
     {
         $me = auth()->user()->id;
@@ -61,7 +61,6 @@ class User extends Authenticatable
         })->exists();
     }
    
-=======
     public function hasPin(int $post_id)
     {
         return $this->pins()->where('post_id',$post_id)->exists();
@@ -168,5 +167,4 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
     
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
 }

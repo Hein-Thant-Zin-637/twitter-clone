@@ -1,16 +1,11 @@
 <?php
 
 use App\Http\Controllers\RegisterConroller;
-<<<<<<< HEAD
+
 use App\Models\Chat;
 use App\Models\Message;
-=======
 use App\Models\Post;
-<<<<<<< HEAD
 use App\Models\User;
-=======
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
->>>>>>> fd24ff5313590e9202fc22d32d38c0f9cdc9b161
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ImageUpload;
 use Illuminate\Support\Facades\DB;
@@ -31,9 +26,14 @@ Route::get('/test', function () {
     dd($message->media->media);
 });
 
+
+
 Route::get('/', function () {
     return view('layouts.index');
 })->middleware('guest')->name('welcome');
+
+Route::get('/auth/google', [App\Http\Controllers\RegisterController::class,'redirectToGoogle'])->name('google-auth');
+Route::get('/auth/google/callback', [App\Http\Controllers\RegisterController::class,'handleGoogleCallback']);
 
 Route::get('/singup/{step}',  [App\Http\Controllers\RegisterController::class,'index'])->name('singup');
 Route::post('/singup/{step}',  [App\Http\Controllers\RegisterController::class,'store']);
@@ -42,7 +42,6 @@ Route::get('/singin/{step}',  [App\Http\Controllers\LoginController::class,'inde
 Route::post('/singin/{step}',  [App\Http\Controllers\LoginController::class,'store']);
 
 Route::get('/logout', [App\Http\Controllers\LoginController::class,'logout'])->name('logout');
-<<<<<<< HEAD
 
 //chat
 Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat'])->name('chat');
@@ -56,9 +55,7 @@ Route::get('/imageUpload', ImageUpload::class);
 Route::get('/dashboard', function () {
     return view('admin.index');
 });
-=======
 Route::get('/addaccount', [App\Http\Controllers\LoginController::class,'addaccount'])->name('addaccount');
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
 
 Route::get('/home', function () {
     return view('twitter.index');
@@ -76,16 +73,17 @@ Route::get('/bookmark', function () {
     return view('twitter.bookmark');
 })->middleware('auth')->name('bookmark');
 
+Route::get('/setting', function () {
+    return view('twitter.setting');
+})->middleware('auth')->name('setting');
+
 Route::get('/{user_name}/status/{id}', function ($user_name, $id) {
     $post = Post::find($id);
     return view('twitter.show',[ 'post'=>$post ]);
 })->middleware('auth')->name('postdetail');
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> fd24ff5313590e9202fc22d32d38c0f9cdc9b161
 //profile
 Route::get('/{user_name}', function ($user_name) {
     $user = User::where('user_name',$user_name)->first();

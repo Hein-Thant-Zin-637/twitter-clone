@@ -90,7 +90,7 @@
 
 @section('script')
     <script>
-        window.addEventListener('close-modal',(event) => {
+        window.addEventListener('close-modal', (event) => {
             let id = event.__livewire.params.id;
             $('#postModal').modal().hide();
             $(`#commentModal${id}`).modal().hide();
@@ -98,4 +98,15 @@
             $('.modal-backdrop').hide();
         })
     </script>
+    <script>
+        function copyToClipboard(link) {
+            console.log(link);
+            event.preventDefault();
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(link).select();
+            document.execCommand('copy');
+        }
+    </script>
+    
 @endsection

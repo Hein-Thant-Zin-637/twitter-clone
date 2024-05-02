@@ -1,11 +1,11 @@
-<div style="display: flex; flex-direction: column;">
+<div class="mt-5 " style="display: flex; flex-direction: column;">
     @forelse ($comments as $comment)
-    <div  class="mb-3 w-100" id="{{ $comment->id }}" >
-        <div onclick="window.location.href = {{ route('home') }}">
-            <div class="info_author_photo pl-2 pt-2">
-                <img src="{{ $comment->user->profile ? '/storage/'.$comment->user->profile : 'profile_default_image.jpg' }}" alt="..."
+    <div  class="d-inline-flex mb-3 border border-gray-200 rounded pb-3 px-2 w-100" id="{{ $comment->id }}" >
+        <div>
+            <button type="button" onclick="event.preventDefault();window.location='{{ route('profile',$comment->user->user_name) }}'" class="info_author_photo bg-white border-0 pl-2 pt-3">
+                <img src="{{ $comment->user->profile ?? '/profile_default_image.jpg'}}" alt="..."
                     style="width:3rem;height:3rem" class="mr-3 rounded-circle">
-            </div>
+            </button>
         </div>
         <div class="flex-fill pt-2">
             <div class="d-flex">
@@ -25,6 +25,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                {{-- dropdown --}}
+                <div class=" el-action-s  pl-2 pr-2 rounded-circle ml-auto">
+                    <livewire:comment-menu :comment="$comment">
                 </div>
             </div>
             {{-- description --}}

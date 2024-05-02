@@ -37,24 +37,11 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <link rel="shortcut icon" href="https://img.merchantface.com/site/favicon.ico">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fd24ff5313590e9202fc22d32d38c0f9cdc9b161
+
     <link rel="stylesheet" href="/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="/css/viewer.min.css">
     <link rel="stylesheet" href="/css/bootstrap-msg.css">
     <link rel="stylesheet" href="/css/site.css">
-<<<<<<< HEAD
-=======
-=======
-    <link rel="stylesheet" href="./css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="./css/viewer.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-msg.css">
-    <link rel="stylesheet" href="./css/site.css">
-    <link rel="stylesheet" href="./css/profile.css">
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
->>>>>>> fd24ff5313590e9202fc22d32d38c0f9cdc9b161
 
     <script src="/js/jquery-1.11.3.min.js.download"></script>
     <script src="/js/bootstrap.min.js.download"></script>
@@ -78,6 +65,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     @livewireStyles
+    
 
 </head>
 
@@ -94,7 +82,7 @@
                         <a class="nav-link p-0 w-auto h-auto" href="{{route('home')}}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
-                                <object data="/svg/home.svg" width="30" height="30">
+                                <object data="{{ Route::is('home')  ? '/svg/home_active.svg' : '/svg/home.svg' }}" width="30" height="30">
                                 </object><span>&nbsp;Home</span>
                             </div>
                         </a>
@@ -103,7 +91,7 @@
                         <a class="nav-link p-0 w-auto h-auto" href="{{ route('explore') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
-                                <object data="/svg/search.svg" width="30" height="30">
+                                <object data="{{ Route::is('explore')  ? '/svg/search_active.svg' : '/svg/search.svg' }}" width="30" height="30">
                                 </object><span>&nbsp;Explore</span>
                             </div>
                         </a>
@@ -113,7 +101,7 @@
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
                                 <span class="position-relative">
-                                    <object data="/svg/notification.svg" width="30" height="30"></object>
+                                    <object data="{{ Route::is('notification')  ? '/svg/notification_active.svg' : '/svg/notification.svg' }}" width="30" height="30"></object>
                                     @if(auth()->user()->hasNotification()->count() > 0)
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{auth()->user()->hasNotification()->count()}}</span>
                                     @endif
@@ -126,7 +114,7 @@
                         <a class="nav-link p-0 w-auto h-auto" href="{{ route('bookmark') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
-                                <object data="/svg/bookmark.svg" width="30" height="30">
+                                <object data="{{ Route::is('bookmark')  ? '/svg/bookmark_active.svg' : '/svg/bookmark.svg' }}" width="30" height="30">
                                 </object><span>&nbsp;Bookmark</span>
                             </div>
                         </a>
@@ -135,7 +123,7 @@
                         <a class="nav-link p-0 w-auto h-auto" href="{{ route('chat') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
-                                <object data="/svg/message.svg" width="28" height="28">
+                                <object data="{{ Route::is('chat')  ? '/svg/message_active.svg' : '/svg/message.svg' }}" width="28" height="28">
                                 </object><span>&nbsp;Message</span>
                             </div>
                         </a>
@@ -144,16 +132,16 @@
                         <a class="nav-link p-0 w-auto h-auto" href="{{ route('profile',auth()->user()->user_name) }}">
                             <div class="d-flex justify-content-start align-items-center  gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
-                                <object data="/svg/profile.svg" width="30" height="30">
+                                <object data="{{ Route::is('profile')  ? '/svg/profile_active.svg' : '/svg/profile.svg' }}"  width="30" height="30">
                                 </object><span>&nbsp;Profile</span>
                             </div>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-0 w-auto h-auto" href="#">
+                        <a class="nav-link p-0 w-auto h-auto" href="{{ route('setting') }}">
                             <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                                 style="padding: 0.6rem">
-                                <object data="/svg/setting.svg" width="30" height="30">
+                                <object data="{{ Route::is('setting')  ? '/svg/settings_active.svg' : '/svg/setting.svg' }}" width="30" height="30">
                                 </object><span>&nbsp;Setting</span>
                             </div>
                         </a>
@@ -178,7 +166,7 @@
                         <div class="d-flex flex-row gap-3">
                             <div>
                                 
-                                <img src=" {{auth()->user()->profile ? '/storage/'.auth()->user()->profile : 'profile_default_image.jpg'}}"
+                                <img src=" {{auth()->user()->profile ??'/profile_default_image.jpg'}}"
                                     alt="" class="rounded-circle" style="width: 50px; height: 50px;">
                             </div>
                             <div class="rounded-pill d-flex  flex-column">

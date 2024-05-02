@@ -9,7 +9,7 @@ class TagList extends Component
 {
     public $tags;
 
-    protected $listeners = ['postStored' => 'refreshPosts'];
+    protected $listeners = ['refreshTags' => 'refreshPosts'];
 
     public function mount()
     {

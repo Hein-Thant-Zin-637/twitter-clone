@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Message extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
 
     protected $fillable = ['chat_id', 'sender_id', 'receiver_id', 'message', 'media_id' ];
 
@@ -42,13 +41,7 @@ class Message extends Model
 
         }
     }
-=======
-    
-    public function media()
-    {
-        return $this->belongsTo(Message_Media::class);
-    }
+
 
   
->>>>>>> adfc5b0c2f77a478d4c316fb6bd7f2dc4d115947
 }

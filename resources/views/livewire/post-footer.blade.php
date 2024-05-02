@@ -1,4 +1,3 @@
-
 <div class="d-flex justify-content-between p-3">
     <div>
         <livewire:comment-modal :post="$post" />
@@ -52,8 +51,13 @@
                 </button>
             @endif
         </div>
-        <button href="" class="bg-white border-0">
+        {{-- <input type="text"  id="inputField" value="{{ route('postdetail', ['user_name' => $post->user->user_name, 'id' => $post->id]) }}" readonly> --}}
+        <button type="button" id="copyLink"
+            onclick="copyToClipboard('{{url('/')}}/{{ $post->user->user_name }}/status/{{ $post->id }}')"
+            class="bg-white border-0">
             <img src="/svg/share.svg" alt="" style="width: 23px; height: 23px;">
         </button>
     </div>
 </div>
+
+

@@ -16,7 +16,7 @@
                     class="coverPhoto" alt="">
 
                 <img class="profile rounded-circle"
-                    src="{{ $user->profile ? '/storage/' . $user->profile : 'profile_default_image.jpg' }}"
+                    src="{{ $user->profile ?? '/profile_default_image.jpg' }}"
                     class="coverPhoto" alt="">
 
             </div>
@@ -188,5 +188,16 @@
             $(`#reportModal${id}`).modal().hide();
             $('.modal-backdrop').hide();
         })
+    </script>
+    <script>
+        function copyToClipboard(link) {
+            console.log(link);
+            event.preventDefault();
+    
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(link).select();
+            document.execCommand('copy');
+        }
     </script>
 @endsection
