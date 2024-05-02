@@ -7,7 +7,7 @@
                             <button type="button"
                                 onclick="event.preventDefault();window.location='{{ route('profile', $noti->action_user->user_name) }}'"
                                 class="info_author_photo  border-0 pl-2 pt-2  <?=  ($noti->is_read) ? 'bg-white' : 'bg-gray-200'  ?>">
-                                <img src="{{ $noti->action_user->profile ? '/storage/' . $noti->action_user->profile : 'profile_default_image.jpg' }}"
+                                <img src="{{ $noti->action_user->profile ?? '/profile_default_image.jpg' }}"
                                     alt="..." style="width:3rem;height:3rem" class="mr-3 rounded-circle ">
                             </button>
                         </div>

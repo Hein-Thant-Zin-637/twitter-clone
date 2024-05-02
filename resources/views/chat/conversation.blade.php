@@ -20,12 +20,14 @@
                     $reciever = $chatz->user_one == auth()->user()->id ? $chatz->userTwo : $chatz->userOne;
                 @endphp
                 <div class="d-flex justify-content-between {{ $recieverId == $reciever->id ? 'border-end border-primary border-3' : '' }}">
-                    <form class="d-flex justify-content-between ms-0 text-decoration-none" action="/chat/conversation/{{ $chatz->id }}/{{ $reciever->id }}">
+                    <a class="d-flex justify-content-between ms-0 text-decoration-none" href="/chat/conversation/{{ $chatz->id }}/{{ $reciever }}">
                         @csrf
-                        <button class="text-left border-0 fs-5 p-2" style="width: 300px !important; background-color: white;" type="submit">
-                            <img class="rounded-circle small-profile" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="photo">
-                            {{ $reciever->name }}
-                            <small class="fw-light fs-6"> @ {{ $reciever->user_name }}</small>
+                        <button class="text-left d-flex flex-row gap-3 align-items-center border-0 fs-5 p-2" style="width: 300px !important; background-color: white;" type="submit">
+                            <img class="rounded-circle small-profile" src="{{ $reciever->profile ? '/storage/'.$reciever->profile : '/profile_default_image.jpg'}}" alt="photo">
+                            <div class="d-flex " style="flex-direction: column">
+                                <p class="m-0">{{ $reciever->name }} </p>
+                                <small class="fw-light fs-6"> @ {{ $reciever->user_name }}</small>
+                            </div>
                         </button>
                     </form>
     
@@ -58,9 +60,9 @@
     {{-- conversation detail --}}
     <div class="col-lg-8 col-md-12 mb-4 p-0 mt-2">
         @if ($chat->user_one == auth()->user()->id)
-            <div class="d-flex justify-content-between fixed-top chat-head border-bottom pb-2 bg-white">
+            <div class="ms-1 ps-1 d-flex justify-content-between fixed-top chat-head border-bottom pb-2 bg-white">
                 <div class="fs-5">
-                    <img class="rounded-circle small-profile ms-1" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="photo">
+                    <img class="rounded-circle small-profile ms-1" src="{{ $chatz->userTwo->profile ? '/storage/'.$chatz->userTwo->profile : '/profile_default_image.jpg'}}" alt="photo">
                     {{ $chat->userTwo->name }}
                 </div>
                 <div class="dropdown">
@@ -80,9 +82,9 @@
             
             <livewire:image-upload :chat="$chat" :reciever="$chat->userTwo">
         @else
-            <div class="d-flex justify-content-between fixed-top chat-head border-bottom pb-2 bg-white">
+            <div class="ms-1 ps-1 d-flex justify-content-between fixed-top chat-head border-bottom pb-2 bg-white">
                 <div class="fs-5">
-                    <img class="rounded-circle small-profile ms-1" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="photo">
+                    <img class="rounded-circle small-profile ms-1" src="{{ $chatz->userOne->profile ? '/storage/'.$chatz->userOne->profile : '/profile_default_image.jpg'}}" alt="photo">
                     {{ $chat->userOne->name }}
                 </div>
                 <div class="dropdown">
@@ -131,7 +133,7 @@
                 @else
                 <a class="d-flex justify-content-between border p-2" href="{{ route('conversation', $user->id) }}">
                     <div>
-                        <img class="rounded-circle small-profile" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="photo">
+                        <img class="rounded-circle small-profile" src="{{ $user->profile ? '/storage/'.$user->profile : '/profile_default_image.jpg'}}" alt="photo">
                         {{ $user->name }}
                     </div>
                     <button type="submit" class="btn btn-sm btn-primary rounded-pill">Chat</button>

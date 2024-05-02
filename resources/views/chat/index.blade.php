@@ -22,10 +22,12 @@
                 <div class="d-flex justify-content-between">
                     <form class="d-flex justify-content-between ms-0 text-decoration-none" action="/chat/conversation/{{ $chatz->id }}/{{ $reciever->id }}" >
                         @csrf
-                        <button class="text-left border-0 fs-5 p-2" style="width: 300px !important; background-color: white;" type="submit">
-                            <img class="rounded-circle small-profile" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="photo">
-                            {{ $reciever->name }}
-                            <small class="fw-light fs-6"> @ {{ $reciever->user_name }}</small>
+                        <button class="text-left d-flex flex-row gap-3 border-0 fs-5 p-2" style="width: 300px !important; background-color: white;" type="submit">
+                            <img class="rounded-circle small-profile" src="{{ $reciever->profile ? '/storage/'.$reciever->profile : '/profile_default_image.jpg'}}" alt="photo">
+                            <div class="d-flex " style="flex-direction: column">
+                                <p class="m-0">{{ $reciever->name }} </p>
+                                <small class="fw-light fs-6"> @ {{ $reciever->user_name }}</small>
+                            </div>
                         </button>
                     </form>
     

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class RegisterController extends Controller
 {
@@ -14,6 +15,37 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        $googleUser = Socialite::driver('google')->stateless()->user();
+        $user = User::where('email', $googleUser->email)->first();
+        $dateOfBirth = $googleUser->user['birthdate'] ?? null;
+        if (!$user) {
+            $username = $this->generateUsername($googleUser->name);
+                if (User::where('user_name', $username)->exists()) {
+                    $username = $this->generateUsername($googleUser->name);
+                }
+            $user = User::create([
+                'name' => $googleUser->name,
+                'user_name' => $username,
+                'email' => $googleUser->email,
+                'password' => bcrypt('generatedPassword'),
+                'dob' => $dateOfBirth,
+                'profile' => $googleUser->avatar,
+
+            ]);
+        }
+
+        Auth::login($user, true);
+
+        return redirect()->intended('home');
     }
 
     public function index($step)

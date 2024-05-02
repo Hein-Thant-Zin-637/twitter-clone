@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\RegisterConroller;
+
 use App\Models\Chat;
 use App\Models\Message;
 use App\Models\Post;
-
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ImageUpload;
@@ -26,9 +26,14 @@ Route::get('/test', function () {
     dd($message->media->media);
 });
 
+
+
 Route::get('/', function () {
     return view('layouts.index');
 })->middleware('guest')->name('welcome');
+
+Route::get('/auth/google', [App\Http\Controllers\RegisterController::class,'redirectToGoogle'])->name('google-auth');
+Route::get('/auth/google/callback', [App\Http\Controllers\RegisterController::class,'handleGoogleCallback']);
 
 Route::get('/singup/{step}',  [App\Http\Controllers\RegisterController::class,'index'])->name('singup');
 Route::post('/singup/{step}',  [App\Http\Controllers\RegisterController::class,'store']);
@@ -67,6 +72,10 @@ Route::get('/notification', function () {
 Route::get('/bookmark', function () {
     return view('twitter.bookmark');
 })->middleware('auth')->name('bookmark');
+
+Route::get('/setting', function () {
+    return view('twitter.setting');
+})->middleware('auth')->name('setting');
 
 Route::get('/{user_name}/status/{id}', function ($user_name, $id) {
     $post = Post::find($id);

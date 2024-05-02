@@ -54,6 +54,7 @@ class NewPost extends Component
         $this->resetInput();
         $this->dispatch('close-modal');
         $this->dispatch('refreshPosts');
+        $this->dispatch('refreshTags');
     }
 
     public function resetInput()

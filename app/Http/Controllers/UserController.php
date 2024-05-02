@@ -64,7 +64,7 @@ class UserController extends Controller
             'website' => $request->website,
             'location' => $request->location,
             'phone' => $request->phone,
-            'profile' => $path,
+            'profile' => '/storage/'.$path,
         ]);
 
       }else{
@@ -88,7 +88,7 @@ class UserController extends Controller
             'location' => $request->location,
             'phone' => $request->phone,
             'cover_photo' => $path1,
-            'profile' => $path2
+            'profile' => '/storage/'.$path2
         ]);
 
       }

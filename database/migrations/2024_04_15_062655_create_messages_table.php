@@ -23,7 +23,7 @@ return new class extends Migration
             // Define foreign keys
             $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('media_id')->references('id')->on('message_media')->onDelete('cascade');
+            $table->foreign('media_id')->references('id')->on('message__media')->onDelete('cascade');
         });
     }
 

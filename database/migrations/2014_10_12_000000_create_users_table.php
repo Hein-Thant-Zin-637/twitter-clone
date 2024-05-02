@@ -17,11 +17,12 @@ return new class extends Migration
             $table->string('user_name')->unique();
             $table->string('email')->unique()->nullable();
             $table->integer('phone')->unique()->nullable();
-            $table->string('password');
+            $table->string('google_id')->nullable();
+            $table->string('password')->nullable();
             $table->text('bio')->nullable();
             $table->text('location')->nullable();
             $table->string('website')->nullable();
-            $table->date('dob');
+            $table->date('dob')->nullable();
             $table->string('profile')->nullable();
             $table->string('cover_photo')->nullable();
             $table->boolean('is_admin')->default(0);

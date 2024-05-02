@@ -13,18 +13,13 @@
 
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/welcome.css">
 
 </head>
 
 <body>
-
-    
-
-
-
 
     <div class="row w-100">
         <div class="col-12 col-lg-6 p-5 d-lg-flex justify-content-center align-items-center">
@@ -34,11 +29,11 @@
             <div class="container d-flex flex-column justify-content-left ">
                 <h1 class="h1 font-weight-bold mb-5 " style="font-size: 55px">Happening now</h1>
                 <h3 class="font-weight-bold my-3 float-left">Join today</h3>
-                <button
-                    class="mb-3 mt-3 d-flex flex-row justify-content-center align-items-center gap-3 w-50  border-1 border-gray-200 rounded-pill bg-white p-1">
+                <a href="{{ route('google-auth') }}"
+                    class="mb-3 mt-3 d-flex flex-row text-decoration-none text-dark border border-dark justify-content-center align-items-center gap-3 w-50  border-1 border-gray-200 rounded-pill bg-white p-1">
                     <img src="/svg/google.svg" alt="" style="width: 30px; height: 30px;">
                     <span>Sign up with Google</span>
-                </button>
+                </a>
                 <button
                     class=" mb-3 d-flex flex-row justify-content-center align-items-center gap-3 w-50 border-1 border-gray-200 rounded-pill bg-white p-1">
                     <img src="/svg/apple.svg" alt="" style="width: 30px; height: 30px;">
@@ -48,7 +43,8 @@
                     <hr>
                     <span>or</span>
                 </div>
-                <a href="{{ route('singup',['step' => 'data']) }}" class=" btn btn-primary font-weight-bold p-2 w-50 rounded-pill">
+                <a href="{{ route('singup', ['step' => 'data']) }}"
+                    class=" btn btn-primary font-weight-bold p-2 w-50 rounded-pill">
                     <span style="font-weight:bold;">Create account</span>
                 </a>
                 <div class="w-50">
@@ -57,7 +53,7 @@
                             Use</span>.</small>
                 </div>
                 <h4 class="h4 font-weight-bold mt-5 mb-3">Already have anaccount?</h4>
-                <a href="{{ route('singin',['step' => 'data']) }}"
+                <a href="{{ route('singin', ['step' => 'data']) }}"
                     class="mb-3 btn border border-gray-200 text-primary font-weight-bold text-center w-50 rounded-pill p-2">
                     <span style="font-weight:bold; text-decoration: none;">Sign in</span>
                 </a>
@@ -70,40 +66,40 @@
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    @if(isset($_SESSION['ban']))
-    <div class="modal" id="register" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title text-danger">!!!!!!!!</h2>
-       
-      
-      </div>
-      <div class="modal-body">
-      <p class="text-danger">{{ $_SESSION['ban'] }}</p>
-      </div>
-      <div class="modal-footer">
-       
-      </div>
-    </div>
-  </div>
-</div>
+    @if (isset($_SESSION['ban']))
+        <div class="modal" id="register" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title text-danger">!!!!!!!!</h2>
 
-    <script type="text/javascript">
-        $(window).on('load', function() {
-            $('#register').modal('show');
-        });
 
-        
-        function close(){
-            $('#register').modal('hide');
-        }
-    </script>
-  @php
- session_destroy(); 
-  @endphp
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger">{{ $_SESSION['ban'] }}</p>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('#register').modal('show');
+            });
+
+
+            function close() {
+                $('#register').modal('hide');
+            }
+        </script>
+        @php
+            session_destroy();
+        @endphp
     @endif
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     @yield('script')

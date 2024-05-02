@@ -15,11 +15,11 @@
                             <div class="my-3 mb-4">
                                 <h3 style="font-weight: bold">Sign in to X</h3>
                             </div>
-                            <button
-                                class="mb-3 mt-3 d-flex flex-row justify-content-center align-items-center gap-3 w-100  border-1 border-gray-200 rounded-pill bg-white p-1">
+                            <a href="{{ route('google-auth') }}"
+                                class="mb-3 mt-3 d-flex flex-row text-decoration-none text-dark border border-dark justify-content-center align-items-center gap-3 w-100  border-1 border-gray-200 rounded-pill bg-white p-1">
                                 <img src="/svg/google.svg" alt="" style="width: 30px; height: 30px;">
                                 <span>Sign up with Google</span>
-                            </button>
+                            </a>
                             <button
                                 class=" mb-3 d-flex flex-row justify-content-center align-items-center gap-3 w-100 border-1 border-gray-200 rounded-pill bg-white p-1">
                                 <img src="/svg/apple.svg" alt="" style="width: 30px; height: 30px;">
@@ -41,13 +41,14 @@
                                 <button type="submit" class="btn btn-dark rounded-pill w-100">Next</button>
                             </div>
                             <div class="mb-3">
-                                <a href="#" class="btn border border-gray-200 rounded-pill w-100 " style="font-weight: bold">Forgot password?</a>
+                                <a href="#" class="btn border border-gray-200 rounded-pill w-100 "
+                                    style="font-weight: bold">Forgot password?</a>
                             </div>
                             <div>
-                                <span>Dont't have an account?<a href="#" class="text-info text-decoration-none">Sign up</a></span>
+                                <span>Dont't have an account?<a href="#" class="text-info text-decoration-none">Sign
+                                        up</a></span>
                             </div>
                         @elseif ($step == 'password')
-                        
                             <div style="margin-bottom: 230px;">
                                 <div class="my-3 mb-4">
                                     <h3 style="font-weight: bold">Enter Your Password</h3>
@@ -63,15 +64,16 @@
                                 </div>
                             </div>
                             <div>
-                                <?php $type =session('type') ; ?>
-                                <input type="hidden" name="type" value="{{$type}}">
-                                <input type="hidden" name="{{$type}}" value="{{session("$type")}}">
+                                <?php $type = session('type'); ?>
+                                <input type="hidden" name="type" value="{{ $type }}">
+                                <input type="hidden" name="{{ $type }}" value="{{ session("$type") }}">
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-dark rounded-pill w-100">Login</button>
                             </div>
                             <div>
-                                <span>Dont't have an account?<a href="#" class="text-info text-decoration-none">Sign up</a></span>
+                                <span>Dont't have an account?<a href="#" class="text-info text-decoration-none">Sign
+                                        up</a></span>
                             </div>
                         @endif
                     </form>
