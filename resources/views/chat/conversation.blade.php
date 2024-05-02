@@ -73,7 +73,6 @@
                             @method('delete')
                             <li><button type="submit" class="dropdown-item text-danger">Delete Conversation</button></li>
                         </form>
-                        <li><a type="submit" class="dropdown-item" href="#">Report Conversation</a></li>
                     </ul>
                 </div>
                 {{-- <button type="submit" class="btn btn-sm btn-primary rounded-circle messenger-menu me-2 mt-1"><i class="fa-solid fa-exclamation"></i></button> --}}
@@ -96,7 +95,6 @@
                             @method('delete')
                             <li><button type="submit" class="dropdown-item text-danger">Delete Conversation</button></li>
                         </form>
-                        <li><a type="submit" class="dropdown-item" href="#">Report Conversation</a></li>
                     </ul>
                 </div>
                 {{-- <button type="submit" class="btn btn-sm btn-primary rounded-circle messenger-menu me-2 mt-1"><i class="fa-solid fa-exclamation"></i></button> --}}
@@ -144,4 +142,15 @@
       </div>
     </div>
   </div>
+@endsection
+@section('script')
+    <script>
+        window.addEventListener('close-modal',(event) => {
+            let id = event.__livewire.params.id;
+            $('#postModal').modal().hide();
+            $(`#commentModal${id}`).modal().hide();
+            $(`#reportModal${id}`).modal().hide();
+            $('.modal-backdrop').hide();
+        })
+    </script>
 @endsection

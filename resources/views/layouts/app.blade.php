@@ -24,6 +24,9 @@
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="/css/style.css">
 
+    {{-- emoji css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.css">
+
     <!----======== profile ======== -->
     <link rel="stylesheet" href="/css/profile.css">
 
@@ -65,6 +68,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     @livewireStyles
+
 
 </head>
 
@@ -202,9 +206,17 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
+    {{-- jquery link --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+    {{-- emoji section script --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.js"></script>
     @livewireScripts
 
+    {{-- javascript for emoji picker --}}
+    <script>
+        $("#emoji_picker").emojioneArea()
+    </script>
 
     @yield('script')
 

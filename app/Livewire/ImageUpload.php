@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Message;
 use App\Models\Message_Media;
+use App\Models\MessageReport;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -12,7 +13,7 @@ use Carbon\Carbon;
 class ImageUpload extends Component
 {
     use WithFileUploads;
-    public $image, $message, $chat, $reciever;
+    public $image, $message, $chat, $reciever, $description, $user_id, $message_id;
     public $hasMessage = true;
 
     public function render()
@@ -72,6 +73,16 @@ class ImageUpload extends Component
             $this->resetExcept('chat','reciever');   
 
         }
+    }
+
+    public function ReportMessage($message_id, $user_id)
+    {
+        MessageReport::create([
+            'reportmessage' => $this->description,
+            'user_id' => $user_id,
+            'message_id' => $message_id,
+        ]);
+        $this->dispatch('close-modal');
     }
 
 

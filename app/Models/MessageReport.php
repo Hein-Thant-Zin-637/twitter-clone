@@ -11,6 +11,7 @@ class MessageReport extends Model
 
     protected $fillable = [
         'reportmessage',
+        'user_id',
         'message_id',
     ];
 
