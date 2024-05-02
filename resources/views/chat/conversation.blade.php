@@ -2,7 +2,7 @@
 @section('content')
 <div class="row w-100 v-body">
     <div class="col-lg-4 border-end p-0 vh-100">
-        <div class="d-flex justify-content-between mt-2">
+        <div class="d-flex justify-content-between">
             <div class="d-flex align-items-center mt-2 ms-2">
                 <h4>Messages</h4>
             </div>
@@ -13,17 +13,17 @@
             </div>
         </div>
         <div class="mt-4 container m-0 p-0">
-        @if ($conversation)
+            @if ($conversation)
             @foreach ($chatArray as $chatz)
                 @if ($chatz->user_one == auth()->user()->id || $chatz->user_two == auth()->user()->id)
                 @php
                     $reciever = $chatz->user_one == auth()->user()->id ? $chatz->userTwo : $chatz->userOne;
                 @endphp
-                <div class="d-flex justify-content-between {{ $recieverId == $reciever->id ? 'border-end border-primary border-3' : '' }}">
-                    <a class="d-flex justify-content-between ms-0 text-decoration-none" href="/chat/conversation/{{ $chatz->id }}/{{ $reciever }}">
+                <div class="d-flex justify-content-between">
+                    <form class="d-flex justify-content-between ms-0 text-decoration-none" action="/chat/conversation/{{ $chatz->id }}/{{ $reciever->id }}" >
                         @csrf
-                        <button class="text-left d-flex flex-row gap-3 align-items-center border-0 fs-5 p-2" style="width: 300px !important; background-color: white;" type="submit">
-                            <img class="rounded-circle small-profile" src="{{ $reciever->profile ? '/storage/'.$reciever->profile : '/profile_default_image.jpg'}}" alt="photo">
+                        <button class="text-left d-flex flex-row gap-3 border-0 fs-5 p-2" style="width: 300px !important; background-color: white;" type="submit">
+                            <img class="rounded-circle small-profile" src="{{ $reciever->profile ?? '/profile_default_image.jpg'}}" alt="photo">
                             <div class="d-flex " style="flex-direction: column">
                                 <p class="m-0">{{ $reciever->name }} </p>
                                 <small class="fw-light fs-6"> @ {{ $reciever->user_name }}</small>
@@ -62,7 +62,7 @@
         @if ($chat->user_one == auth()->user()->id)
             <div class="ms-1 ps-1 d-flex justify-content-between fixed-top chat-head border-bottom pb-2 bg-white">
                 <div class="fs-5">
-                    <img class="rounded-circle small-profile ms-1" src="{{ $chatz->userTwo->profile ? '/storage/'.$chatz->userTwo->profile : '/profile_default_image.jpg'}}" alt="photo">
+                    <img class="rounded-circle small-profile ms-1" src="{{ $chatz->userTwo->profile ?? '/profile_default_image.jpg'}}" alt="photo">
                     {{ $chat->userTwo->name }}
                 </div>
                 <div class="dropdown">
@@ -77,7 +77,6 @@
                         </form>
                     </ul>
                 </div>
-                {{-- <button type="submit" class="btn btn-sm btn-primary rounded-circle messenger-menu me-2 mt-1"><i class="fa-solid fa-exclamation"></i></button> --}}
             </div>
             
             <livewire:image-upload :chat="$chat" :reciever="$chat->userTwo">
@@ -99,15 +98,11 @@
                         </form>
                     </ul>
                 </div>
-                {{-- <button type="submit" class="btn btn-sm btn-primary rounded-circle messenger-menu me-2 mt-1"><i class="fa-solid fa-exclamation"></i></button> --}}
             </div>
     
             <livewire:image-upload :chat="$chat" :reciever="$chat->userOne">
         @endif
     </div>
-
-    {{-- <livewire:conversation-switch :conversation="$conversation" :chatArray="$chatArray" :reciever="$recieverId" :chat="$chat"> --}}
-
 </div>
 
   <!-- Modal -->
@@ -131,12 +126,12 @@
                 @if($user->hasChat($user->id))
                     @continue
                 @else
-                <a class="d-flex justify-content-between border p-2" href="{{ route('conversation', $user->id) }}">
+                <a class="d-flex justify-content-between border p-2 text-decoration-none text-dark mt-1" href="{{ route('conversation', $user->id) }}">
                     <div>
-                        <img class="rounded-circle small-profile" src="{{ $user->profile ? '/storage/'.$user->profile : '/profile_default_image.jpg'}}" alt="photo">
+                        <img class="rounded-circle small-profile" src="{{ $user->profile ?? '/profile_default_image.jpg'}}" alt="photo">
                         {{ $user->name }}
                     </div>
-                    <button type="submit" class="btn btn-sm btn-primary rounded-pill">Chat</button>
+                    <button type="submit" class="btn btn-sm btn-primary rounded-pill px-4">Chat</button>
                 </a>
                 @endif
             @endforeach

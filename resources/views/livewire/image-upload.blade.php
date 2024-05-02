@@ -127,9 +127,10 @@
                     @endif
                 @endif  
         @endforeach
-        <div class="text-center mt-4">
-            <img class="rounded-circle small-profile ms-1" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="...">
+        <div class="text-center mt-4 mb-1">
+            <img class="rounded-circle" width="80px" height="80px" src="{{ $reciever->profile ?? '/profile_default_image.jpg'}}" alt="...">
             <h4>{{ $reciever->name }}</h4>
+            <button type="button" onclick="event.preventDefault();window.location='{{ route('profile',$reciever->user_name) }}'" class="bg-white border-1 border-dark p-1 rounded">View Profile</button>
         </div>
     </div>
     

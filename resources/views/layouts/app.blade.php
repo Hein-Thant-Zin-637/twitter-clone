@@ -151,6 +151,16 @@
                             </div>
                         </a>
                     </li>
+                    @if(auth()->user()->is_admin)
+                        <li class="nav-item">
+                            <a class="nav-link p-0 w-auto h-auto" href="{{ route('dashboard') }}">
+                                <div class="d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
+                                    style="padding: 0.6rem">
+                                    </object><span>&nbsp;Admin Pannel</span>
+                                </div>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <div class="d-block d-lg-none">
@@ -164,8 +174,8 @@
             <div class="d-block d-lg-none ms-5 mb-3 fixed-bottom">
                 <img src="/img/avatar2.jpeg" alt="" class="rounded-pill" style="width: 50px; height: 50px;">
             </div>
-            <div class=" d-none d-lg-block fixed-bottom  mb-3">
-                <div class="f-none d-md-block dropup-center dropup">
+            <div class=" d-none d-lg-block fixed-bottom  mb-3" style="width: 200px">
+                <div class="f-none d-md-block dropup-center dropup" style="width: 200px">
                     <div class="w-100 d-flex justify-content-start align-items-center gap-2 w-auto rounded-pill"
                         style="padding: 0.6rem">
                         <div class="d-flex flex-row gap-3">

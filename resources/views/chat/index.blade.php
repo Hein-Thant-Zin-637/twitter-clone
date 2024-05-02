@@ -23,7 +23,7 @@
                     <form class="d-flex justify-content-between ms-0 text-decoration-none" action="/chat/conversation/{{ $chatz->id }}/{{ $reciever->id }}" >
                         @csrf
                         <button class="text-left d-flex flex-row gap-3 border-0 fs-5 p-2" style="width: 300px !important; background-color: white;" type="submit">
-                            <img class="rounded-circle small-profile" src="{{ $reciever->profile ? '/storage/'.$reciever->profile : '/profile_default_image.jpg'}}" alt="photo">
+                            <img class="rounded-circle small-profile" src="{{ $reciever->profile ?? '/profile_default_image.jpg'}}" alt="photo">
                             <div class="d-flex " style="flex-direction: column">
                                 <p class="m-0">{{ $reciever->name }} </p>
                                 <small class="fw-light fs-6"> @ {{ $reciever->user_name }}</small>
@@ -48,11 +48,13 @@
 
             @endforeach
         @else
-            <b class="h1">Welcome to your inbox!</b>
+        <div class="p-3">
+            <b class="h2">Welcome to your inbox!</b>
             <p>Drop a line, share posts and more with private conversations between you and others on X.</p>
             <button type="button" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Write a message
             </button>
+        </div>
         @endif
         </div>
     </div>
@@ -86,9 +88,9 @@
                 @if($user->hasChat($user->id))
                     @continue
                 @else
-                <a class="d-flex justify-content-between border p-2" href="{{ route('conversation', $user->id) }}">
+                <a class="d-flex justify-content-between border p-2 text-decoration-none text-dark px-4" href="{{ route('conversation', $user->id) }}">
                     <div>
-                        <img class="rounded-circle small-profile" src="https://static.wikia.nocookie.net/aesthetics/images/a/a3/Pure_blue.png/revision/latest/thumbnail/width/360/height/450?cb=20210323184329" alt="photo">
+                        <img class="rounded-circle small-profile" src="{{ $user->profile ?? '/profile_default_image.jpg'}}" alt="photo">
                         {{ $user->name }}
                     </div>
                     <button type="submit" class="btn btn-sm btn-primary rounded-pill">Chat</button>
